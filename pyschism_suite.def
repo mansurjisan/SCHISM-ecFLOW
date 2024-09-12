@@ -1,0 +1,28 @@
+suite pyschism_suite
+  edit ECF_HOME '/home/mjisan/workflow'
+  edit ECF_INCLUDE '/home/mjisan/workflow'
+
+  family preprocess
+
+    task gen_manning
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_manning.ecf'
+    task gen_sflux_era5
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_sflux_era5.ecf'
+    task gen_bctides
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_bctides.ecf'
+    task gen_elevth
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_elevth.ecf'
+    task gen_namelist
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_namelist.ecf'
+  endfamily
+
+  family job_submission
+    trigger /pyschism_suite/preprocess == complete  # Corrected trigger with absolute path
+    task gen_rundir
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_rundir.ecf'
+    task gen_jobcard
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_jobcard.ecf'
+#    task submit_job
+#      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/submit_job.ecf'
+  endfamily
+endsuite

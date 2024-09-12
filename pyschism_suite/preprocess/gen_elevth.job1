@@ -1,0 +1,46 @@
+#!/bin/bash
+#%include <head.h>
+#%include <tail.h>
+
+# Set the path to conda.sh
+CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+
+# Check if conda.sh exists
+if [ ! -f "$CONDA_SH" ]; then
+    echo "Error: Could not find conda.sh at $CONDA_SH"
+    exit 1
+fi
+
+# Initialize conda
+source "$CONDA_SH"
+
+# Activate the PySCHISM environment
+conda activate pyschism_mjisan
+
+# Set variables
+HGRID_PATH="../fix/hgrid.ll"
+START_DATE="1994-10-12"
+RNDAY=1.0
+BCTYPES='[[1,0,0,0]]'
+CONSTITUENTS="Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1"
+DATABASE="tpxo"
+PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+
+
+cd $PREPROCESS/scripts/Elev
+
+
+./predict_tide < setup.inp
+python convert_elev.py
+
+# Check if the script ran successfully
+if [ $? -eq 0 ]; then
+    ecflow_client --label=info "convert_elev.py completed successfully"
+else
+    ecflow_client --label=error "convert_elev.py failed"
+    exit 1
+fi
+
+conda deactivate
+
+echo "Time varying water elevation generation complete"
