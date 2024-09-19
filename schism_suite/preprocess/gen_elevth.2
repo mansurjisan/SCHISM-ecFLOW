@@ -1,0 +1,603 @@
++ set -o pipefail
++ export ECF_PORT=3141
++ ECF_PORT=3141
++ export ECF_HOST=hercules-01-11
++ ECF_HOST=hercules-01-11
++ export ECF_NAME=/pyschism_suite/preprocess/gen_elevth
++ ECF_NAME=/pyschism_suite/preprocess/gen_elevth
++ export ECF_PASS=hZ.P/Mbk
++ ECF_PASS=hZ.P/Mbk
++ export ECF_TRYNO=2
++ ECF_TRYNO=2
++ export ECF_RID=1887589
++ ECF_RID=1887589
++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/nco-5.1.6-32skx4wgotvmfeqfsx25mnb3twk736gf/bin:/apps/spack-managed/gcc-11.3.1/udunits-2.2.28-yejcsju74d43ulira4kz7flaghyd5cmf/bin:/apps/spack-managed/gcc-11.3.1/netcdf-c-4.9.2-yjlphf2mkfbvqjfqmvtqs2fd44zglg2z/bin:/apps/spack-managed/gcc-11.3.1/gsl-2.7.1-ifurca4e6xlq3ikertgmew5tzbibmh5c/bin:/apps/spack-managed/gcc-11.3.1/antlr-2.7.7-s4eee52wjmak72426zvutm7tc4pe6rzz/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/nco-5.1.6-32skx4wgotvmfeqfsx25mnb3twk736gf/bin:/apps/spack-managed/gcc-11.3.1/udunits-2.2.28-yejcsju74d43ulira4kz7flaghyd5cmf/bin:/apps/spack-managed/gcc-11.3.1/netcdf-c-4.9.2-yjlphf2mkfbvqjfqmvtqs2fd44zglg2z/bin:/apps/spack-managed/gcc-11.3.1/gsl-2.7.1-ifurca4e6xlq3ikertgmew5tzbibmh5c/bin:/apps/spack-managed/gcc-11.3.1/antlr-2.7.7-s4eee52wjmak72426zvutm7tc4pe6rzz/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ ecflow_client --init=1887589
++ trap ERROR 0
++ trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
++ CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
++ '[' '!' -f /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh ']'
++ source /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ '[' -z x ']'
++ conda activate pyschism_mjisan
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate pyschism_mjisan
++ '[' -n '' ']'
++ local ask_conda
+++ PS1=
+++ __conda_exe shell.posix activate pyschism_mjisan
+++ /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda shell.posix activate pyschism_mjisan
++ ask_conda='. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(pyschism_mjisan) '\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/nco-5.1.6-32skx4wgotvmfeqfsx25mnb3twk736gf/bin:/apps/spack-managed/gcc-11.3.1/udunits-2.2.28-yejcsju74d43ulira4kz7flaghyd5cmf/bin:/apps/spack-managed/gcc-11.3.1/netcdf-c-4.9.2-yjlphf2mkfbvqjfqmvtqs2fd44zglg2z/bin:/apps/spack-managed/gcc-11.3.1/gsl-2.7.1-ifurca4e6xlq3ikertgmew5tzbibmh5c/bin:/apps/spack-managed/gcc-11.3.1/antlr-2.7.7-s4eee52wjmak72426zvutm7tc4pe6rzz/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
+export CONDA_PROMPT_MODIFIER='\''(pyschism_mjisan) '\''
+export CONDA_PREFIX_1='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
++ eval '. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(pyschism_mjisan) '\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/nco-5.1.6-32skx4wgotvmfeqfsx25mnb3twk736gf/bin:/apps/spack-managed/gcc-11.3.1/udunits-2.2.28-yejcsju74d43ulira4kz7flaghyd5cmf/bin:/apps/spack-managed/gcc-11.3.1/netcdf-c-4.9.2-yjlphf2mkfbvqjfqmvtqs2fd44zglg2z/bin:/apps/spack-managed/gcc-11.3.1/gsl-2.7.1-ifurca4e6xlq3ikertgmew5tzbibmh5c/bin:/apps/spack-managed/gcc-11.3.1/antlr-2.7.7-s4eee52wjmak72426zvutm7tc4pe6rzz/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
+export CONDA_PROMPT_MODIFIER='\''(pyschism_mjisan) '\''
+export CONDA_PREFIX_1='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh
++++ test -n ''
++++ unset XML_CATALOG_FILES
++++ unset xml_catalog_files_libxml2
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh
++++ export GSETTINGS_SCHEMA_DIR=
++++ GSETTINGS_SCHEMA_DIR=
++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
++++ '[' -z ']'
++++ unset GSETTINGS_SCHEMA_DIR
+++ PS1='(pyschism_mjisan) '
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/nco-5.1.6-32skx4wgotvmfeqfsx25mnb3twk736gf/bin:/apps/spack-managed/gcc-11.3.1/udunits-2.2.28-yejcsju74d43ulira4kz7flaghyd5cmf/bin:/apps/spack-managed/gcc-11.3.1/netcdf-c-4.9.2-yjlphf2mkfbvqjfqmvtqs2fd44zglg2z/bin:/apps/spack-managed/gcc-11.3.1/gsl-2.7.1-ifurca4e6xlq3ikertgmew5tzbibmh5c/bin:/apps/spack-managed/gcc-11.3.1/antlr-2.7.7-s4eee52wjmak72426zvutm7tc4pe6rzz/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/nco-5.1.6-32skx4wgotvmfeqfsx25mnb3twk736gf/bin:/apps/spack-managed/gcc-11.3.1/udunits-2.2.28-yejcsju74d43ulira4kz7flaghyd5cmf/bin:/apps/spack-managed/gcc-11.3.1/netcdf-c-4.9.2-yjlphf2mkfbvqjfqmvtqs2fd44zglg2z/bin:/apps/spack-managed/gcc-11.3.1/gsl-2.7.1-ifurca4e6xlq3ikertgmew5tzbibmh5c/bin:/apps/spack-managed/gcc-11.3.1/antlr-2.7.7-s4eee52wjmak72426zvutm7tc4pe6rzz/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ export CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
+++ CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=pyschism_mjisan
+++ CONDA_DEFAULT_ENV=pyschism_mjisan
+++ export 'CONDA_PROMPT_MODIFIER=(pyschism_mjisan) '
+++ CONDA_PROMPT_MODIFIER='(pyschism_mjisan) '
+++ export CONDA_PREFIX_1=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ CONDA_PREFIX_1=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal ']'
++++ export GDAL_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal
++++ GDAL_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal
++++ export GDAL_DRIVER_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins
++++ GDAL_DRIVER_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins
++++ '[' '!' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins ']'
++++ export CPL_ZIP_ENCODING=UTF-8
++++ CPL_ZIP_ENCODING=UTF-8
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/epsg_csv ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/Library/share/epsg_csv ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/glib-2.0/schemas
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ for pre in ${rem}
++++ test '' = /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ conda_catalog_files=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj ']'
++++ export PROJ_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj
++++ PROJ_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj
++++ '[' -f /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj/copyright_and_licenses.csv ']'
++++ export PROJ_NETWORK=ON
++++ PROJ_NETWORK=ON
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits ']'
++++ export UDUNITS2_XML_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits/udunits2.xml
++++ UDUNITS2_XML_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits/udunits2.xml
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ HGRID_PATH=../fix/hgrid.ll
++ START_DATE=1994-10-12
++ RNDAY=1.0
++ BCTYPES='[[1,0,0,0]]'
++ CONSTITUENTS=Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1
++ DATABASE=tpxo
++ PREPROCESS=/home/mjisan/workflow/pyschism_suite
++ cd /home/mjisan/workflow/pyschism_suite/scripts/Elev
++ ./predict_tide
+ 
+ Lat/Lon/Time file:
+ /home/mjisan/workflow/pyschism_suite/scripts/Elev/lat_lon_time
+ Predict OCEAN tide
+ 
+ /home/mjisan/workflow/pyschism_suite/scripts/Elev/DATA/h_tpxo9.v1
+ Model:        n/workflow/pyschism_suite/scripts/Elev/DATA/Model_tpxo9.v1
+ Lat limits:     -90.08334       90.08334    
+ Lon limits:     8.3333336E-02   360.0833    
+ Constituents: m2  s2  n2  k2  k1  o1  p1  q1  mm  mf  m4  mn4 ms4 2n2 s1  
+ Predict elevations (m)
+ Constituents to include: m2  s2  n2  k2  k1  o1  p1  q1  mm  mf  m4  mn4 ms4 
+ 2n2 s1  
+ Reading model.../home/mjisan/workflow/pyschism_suite/preprocess/gen_elevth.job2: line 74: 1887596 Killed                  ./predict_tide < setup.inp
++ ERROR
++ set +e
++ wait
++ ecflow_client --abort=trap
+[17:21:42 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap : hercules-01-11:3141 : blocking : zombie detected, continue waiting
+[17:21:52 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:22:02 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:22:42 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:23:22 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:24:02 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:24:42 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:25:22 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:26:02 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:26:42 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:27:22 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:28:03 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:28:43 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:29:23 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:30:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:30:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:31:26 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:32:06 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:32:48 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:33:29 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:34:10 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:34:50 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:35:30 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:36:10 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:36:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:37:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:38:17 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:38:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:39:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:40:18 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:40:58 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:41:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:42:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:42:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:43:40 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:44:20 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:45:00 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:45:40 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:46:20 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:47:01 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:47:41 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:48:21 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:49:02 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:49:42 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:50:23 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:51:03 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:51:43 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:52:23 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:53:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:53:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:54:24 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:55:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:55:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:56:24 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:57:05 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:57:45 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:58:25 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:59:05 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[17:59:45 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:00:27 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:01:09 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:01:49 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:02:29 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:03:10 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:03:50 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:04:30 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:05:11 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:05:52 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:06:33 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:07:13 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:07:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:08:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:09:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:09:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:10:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:11:16 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:11:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:12:38 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:13:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:14:00 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:14:41 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:15:21 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:16:02 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:16:43 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:17:23 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:18:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:18:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:19:24 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:20:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:20:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:21:25 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:22:05 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:22:45 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:23:26 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:24:07 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:24:48 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:25:28 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:26:10 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:26:51 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:27:32 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:28:12 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:28:53 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:29:33 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:30:13 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:30:53 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:31:33 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:32:13 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:32:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:33:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:34:14 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:34:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:35:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:36:14 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:36:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:37:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:38:14 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:38:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:39:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:40:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:40:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:41:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:42:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:42:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:43:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:44:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:44:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:45:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:46:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:46:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:47:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:48:17 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:48:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:49:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:50:17 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:50:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:51:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:52:18 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:52:58 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:53:38 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:54:18 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:54:58 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:55:38 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:56:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:56:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:57:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:58:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:58:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:59:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:00:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:00:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:01:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:02:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:02:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:03:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:04:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:04:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:05:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:06:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:06:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:07:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:08:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:08:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:09:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:10:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:10:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:11:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:12:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:12:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:13:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:14:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:14:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:15:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:16:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:16:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:17:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:18:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:18:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:19:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:20:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:20:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:21:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:22:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:22:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:23:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:24:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:24:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:25:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:26:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:26:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:27:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:28:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:28:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:29:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:30:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:30:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:31:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:32:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:32:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:33:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:34:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:34:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:35:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:36:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:36:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:37:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:38:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:38:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:39:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:40:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:40:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:41:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:42:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:42:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:43:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:44:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:44:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:45:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:46:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:46:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:47:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:48:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:48:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:49:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:50:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:50:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:51:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:52:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:52:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:53:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:54:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:54:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:55:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:56:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:56:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:57:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:58:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:58:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:59:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:00:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:00:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:01:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:02:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:02:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:03:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+11:3141) trying next host(hercules-01-11:3141)
+[18:12:38 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:13:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:14:00 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:14:41 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:15:21 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:16:02 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:16:43 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:17:23 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:18:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:18:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:19:24 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:20:04 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:20:44 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:21:25 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:22:05 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:22:45 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:23:26 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:24:07 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:24:48 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:25:28 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:26:10 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:26:51 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:27:32 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:28:12 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:28:53 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:29:33 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:30:13 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:30:53 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:31:33 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:32:13 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:32:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:33:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:34:14 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:34:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:35:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:36:14 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:36:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:37:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:38:14 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:38:54 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:39:34 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:40:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:40:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:41:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:42:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:42:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:43:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:44:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:44:55 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:45:35 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:46:15 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:46:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:47:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:48:17 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:48:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:49:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:50:17 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:50:57 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:51:37 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:52:18 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:52:58 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:53:38 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:54:18 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:54:58 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:55:38 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:56:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:56:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:57:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:58:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:58:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[18:59:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:00:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:00:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:01:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:02:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:02:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:03:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:04:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:04:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:05:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:06:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:06:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:07:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:08:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:08:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:09:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:10:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:10:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:11:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:12:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:12:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:13:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:14:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:14:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:15:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:16:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:16:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:17:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:18:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:18:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:19:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:20:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:20:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:21:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:22:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:22:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:23:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:24:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:24:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:25:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:26:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:26:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:27:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:28:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:28:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:29:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:30:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:30:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:31:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:32:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:32:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:33:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:34:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:34:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:35:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:36:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:36:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:37:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:38:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:38:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:39:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:40:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:40:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:41:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:42:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:42:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:43:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:44:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:44:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:45:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:46:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:46:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:47:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:48:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:48:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:49:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:50:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:50:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:51:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:52:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:52:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:53:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:54:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:54:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:55:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:56:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:56:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:57:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:58:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:58:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[19:59:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:00:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:00:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:01:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:02:19 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:02:59 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)
+[20:03:39 18.09.2024] ClientInvoker: chd:abort /pyschism_suite/preprocess/gen_elevth  trap current host(hercules-01-11:3141) trying next host(hercules-01-11:3141)

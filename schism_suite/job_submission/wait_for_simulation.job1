@@ -1,0 +1,107 @@
+#!/bin/bash
+#!/bin/bash
+
+set -e          # stop the shell on first error
+set -u          # fail when using an undefined variable
+set -x          # echo script lines as they are executed
+set -o pipefail # fail if last(rightmost) command exits with a non-zero status
+ 
+# Defines the variables that are needed for any communication with ECF
+export ECF_PORT=3141    # The server port number
+export ECF_HOST=hercules-01-06    # The host name where the server is running
+export ECF_NAME=/schism_suite/job_submission/wait_for_simulation    # The name of this current task
+export ECF_PASS=vGUpGmxL    # A unique password, used for job validation & zombie detection
+export ECF_TRYNO=1  # Current try number of the task
+export ECF_RID=$$             # record the process id. Also used for zombie detection
+# export NO_ECF=1             # uncomment to run as a standalone task on the command line
+ 
+# Define the path where to find ecflow_client
+# make sure client and server use the *same* version.
+# Important when there are multiple versions of ecFlow
+#export PATH=/usr/local/apps/ecflow/5.13.3/bin:$PATH
+export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:$PATH
+ 
+# Tell ecFlow we have started
+ecflow_client --init=$$
+ 
+ 
+# Define a error handler
+ERROR() {
+   set +e                      # Clear -e flag, so we don't fail
+   wait                        # wait for background process to stop
+   ecflow_client --abort=trap  # Notify ecFlow that something went wrong, using 'trap' as the reason
+   trap 0                      # Remove the trap
+   exit 0                      # End the script cleanly, server monitors child, an exit 1, will cause another abort and zombie
+}
+ 
+ 
+# Trap any calls to exit and errors caught by the -e flag
+trap ERROR 0
+ 
+ 
+# Trap any signal that may cause the script to fail
+trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
+
+# Set the base path where Test_Duck directories are located
+BASE_PATH="/work/noaa/nosofs/mjisan/schism/schism_verification_tests"
+
+# Function to find the latest Test_Duck directory
+find_latest_run_directory() {
+    local latest_dir=$(ls -d ${BASE_PATH}/Test_Duck_* | sort -V | tail -n 1)
+    echo "$latest_dir"
+}
+
+# Function to check if simulation is complete
+check_simulation_complete() {
+    local run_dir="$1"
+    local outputs_dir="${run_dir}/outputs"
+    
+    # Check if the outputs directory exists
+    if [ ! -d "$outputs_dir" ]; then
+        echo "Outputs directory does not exist yet: $outputs_dir"
+        return 1
+    fi
+    
+    # Check for the existence of out2d files
+    local out2d_files=$(ls ${outputs_dir}/out2d_*.nc 2>/dev/null | wc -l)
+    if [ "$out2d_files" -gt 0 ]; then
+        echo "Found $out2d_files out2d_*.nc files in $outputs_dir"
+        return 0  # Simulation is complete
+    else
+        echo "No out2d_*.nc files found in $outputs_dir"
+        return 1  # Simulation is not complete
+    fi
+}
+
+# Find the latest run directory
+RUN_DIR=$(find_latest_run_directory)
+echo "Latest run directory: $RUN_DIR"
+
+# Set maximum wait time (e.g., 12 hours = 43200 seconds)
+MAX_WAIT_TIME=43200
+START_TIME=$(date +%s)  # Note the double % here
+
+# Wait for simulation to complete
+echo "Waiting for simulation to complete..."
+while true; do
+    if check_simulation_complete "$RUN_DIR"; then
+        echo "Simulation completed."
+        break
+    fi
+    
+    CURRENT_TIME=$(date +%s)  # Note the double % here
+    ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+    
+    if [ $ELAPSED_TIME -ge $MAX_WAIT_TIME ]; then
+        echo "Maximum wait time exceeded. Exiting."
+        exit 1
+    fi
+    
+    echo "Simulation still running. Waiting 5 minutes before checking again."
+    sleep 300  # Wait for 5 minutes
+done
+
+wait                      # wait for background process to stop
+ecflow_client --complete  # Notify ecFlow of a normal end
+trap 0                    # Remove all traps
+exit 0                    # End the shell

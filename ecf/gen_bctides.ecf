@@ -1,5 +1,5 @@
 #!/bin/bash
-#%include <head.h>
+%include <head.h>
 #%include <tail.h>
 
 # Set the path to conda.sh
@@ -32,14 +32,11 @@ python $PREPROCESS/gen_bctides.py $HGRID_PATH $START_DATE $RNDAY "$BCTYPES" $CON
     --earth_tidal_potential Y \
     --cutoff_depth 0
 
-# Check if the script ran successfully
-if [ $? -eq 0 ]; then
-    ecflow_client --label=info "gen_bctides.py completed successfully"
-else
-    ecflow_client --label=error "gen_bctides.py failed"
-    exit 1
-fi
 
 conda deactivate
 
-echo "Manning's roughness generation complete"
+# Check if the script ran successfully
+ecflow_client --label=info "bctides generation complete"
+
+
+%include <tail.h>

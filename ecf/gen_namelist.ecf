@@ -1,6 +1,5 @@
 #!/bin/bash
-#%include <head.h>
-#%include <tail.h>
+%include <head.h>
 
 # Set the path to conda.sh
 CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
@@ -15,21 +14,27 @@ fi
 source "$CONDA_SH"
 
 # Activate the PySCHISM environment
-conda activate pyschism_env2
+conda activate pyschism_mjisan
 
 # Set variables
-START_YEAR="1994"
-START_MONTH="10"
-START_DAY="12"
-START_HOUR="17"
-RNDAY=3
 PREPROCESS="/home/mjisan/workflow/pyschism_suite"
 
-# Run the gen_sflux_era5.py script
-cd $PREPROCESS/scripts/namelist
+# Change to the directory containing scripts
+cd $PREPROCESS/scripts/namelist/
 
-python gen_namelist.py --year $START_YEAR --month $START_MONTH --day $START_DAY --hour $START_HOUR
+# Choose the appropriate script based on the run type
+if [ "%SCHISM_RUN_TYPE%" == "schism+wwm+atm" ]; then
+    SCRIPT_NAME="gen_namelist_sch_wm_sf.py"
+else
+    SCRIPT_NAME="gen_namelist.py"
+fi
 
+# Run the chosen namelist generation script
+python $SCRIPT_NAME --run_type=%SCHISM_RUN_TYPE%
+
+# Deactivate the conda environment
 conda deactivate
 
-ecflow_client --port 3141 --label=info "ERA5 sflux generation complete"
+ecflow_client --label=info "namelist generation complete"
+
+%include <tail.h>

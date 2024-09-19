@@ -1,5 +1,5 @@
 #!/bin/bash
-#%include <head.h>
+%include <head.h>
 #%include <tail.h>
 
 # Set the path to conda.sh
@@ -24,12 +24,16 @@ RNDAY=1.0
 BCTYPES='[[1,0,0,0]]'
 CONSTITUENTS="Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1"
 DATABASE="tpxo"
-SCRIPT_PATH="../scripts/Elev/"
+PREPROCESS="/home/mjisan/workflow/pyschism_suite"
 
-# Run the gen_bctides.py script
 
-$SCRIPT_PATH/predict_tide < $SCRIPT_PATH/setup.inp
-python $SCRIPT_PATH/convert_elev.py
+cd $PREPROCESS/scripts/Elev
+
+
+./predict_tide < setup.inp
+python convert_elev.py
+
+conda deactivate
 
 # Check if the script ran successfully
 if [ $? -eq 0 ]; then
@@ -39,6 +43,4 @@ else
     exit 1
 fi
 
-conda deactivate
-
-echo "Time varying water elevation generation complete"
+%include <tail.h>

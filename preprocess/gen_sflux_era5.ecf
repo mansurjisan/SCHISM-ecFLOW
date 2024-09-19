@@ -1,6 +1,5 @@
 #!/bin/bash
-#%include <head.h>
-#%include <tail.h>
+%include <head.h>
 
 # Set the path to conda.sh
 CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
@@ -25,9 +24,11 @@ PREPROCESS="/home/mjisan/workflow/pyschism_suite"
 cd $PREPROCESS/scripts/Sflux
 
 # Run the gen_sflux_era5.py script
-
 python gen_sflux_era5_v2.py
 
 conda deactivate
 
-ecflow_client --port 3141 --label=info "ERA5 sflux generation complete"
+# Update ecFlow (this will use the ECF_NAME variable set in the head.h include)
+ecflow_client --label=info "ERA5 sflux generation complete"
+
+%include <tail.h>

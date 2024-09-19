@@ -1,5 +1,5 @@
 #!/bin/bash
-#%include <head.h>
+%include <head.h>
 #%include <tail.h>
 
 # Set the path to conda.sh
@@ -35,14 +35,11 @@ python gen_bctides.py $HGRID_PATH $START_DATE $RNDAY "$BCTYPES" $CONSTITUENTS $D
     --earth_tidal_potential Y \
     --cutoff_depth 0
 
-# Check if the script ran successfully
-if [ $? -eq 0 ]; then
-    ecflow_client --label=info "gen_bctides.py completed successfully"
-else
-    ecflow_client --label=error "gen_bctides.py failed"
-    exit 1
-fi
+
 
 conda deactivate
 
-echo "bctides.in generation complete"
+
+ecflow_client --label=info "bctides.in generation complete"
+
+%include <tail.h>

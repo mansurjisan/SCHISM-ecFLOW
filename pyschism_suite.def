@@ -25,4 +25,15 @@ suite pyschism_suite
 #    task submit_job
 #      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/submit_job.ecf'
   endfamily
+
+#  family postprocessing
+#    trigger /pyschism_suite/job_submission == complete  # Corrected trigger with absolute path
+#    task gen_rundir
+#      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_elev_plot.ecf'
+#    task gen_jobcard
+#      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_horizontal_vel.ecf'
+#    task submit_job
+#      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_wind_speed_plot.ecf'
+#  endfamily
+
 endsuite

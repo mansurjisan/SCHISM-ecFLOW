@@ -1,0 +1,207 @@
++ set -o pipefail
++ export ECF_PORT=3141
++ ECF_PORT=3141
++ export ECF_HOST=hercules-01-06
++ ECF_HOST=hercules-01-06
++ export ECF_NAME=/schism_suite/postprocess/plot_water_elevation
++ ECF_NAME=/schism_suite/postprocess/plot_water_elevation
++ export ECF_PASS=NG7YeSRv
++ ECF_PASS=NG7YeSRv
++ export ECF_TRYNO=4
++ ECF_TRYNO=4
++ export ECF_RID=663597
++ ECF_RID=663597
++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ ecflow_client --init=663597
++ trap ERROR 0
++ trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
++ CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
++ '[' '!' -f /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh ']'
++ source /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ '[' -z x ']'
++ conda activate pyschism_mjisan
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate pyschism_mjisan
++ '[' -n '' ']'
++ local ask_conda
+++ PS1=
+++ __conda_exe shell.posix activate pyschism_mjisan
+++ /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda shell.posix activate pyschism_mjisan
++ ask_conda='. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(pyschism_mjisan) '\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
+export CONDA_PROMPT_MODIFIER='\''(pyschism_mjisan) '\''
+export CONDA_PREFIX_1='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
++ eval '. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(pyschism_mjisan) '\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
+export CONDA_PROMPT_MODIFIER='\''(pyschism_mjisan) '\''
+export CONDA_PREFIX_1='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh
++++ test -n ''
++++ unset XML_CATALOG_FILES
++++ unset xml_catalog_files_libxml2
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh
++++ export GSETTINGS_SCHEMA_DIR=
++++ GSETTINGS_SCHEMA_DIR=
++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
++++ '[' -z ']'
++++ unset GSETTINGS_SCHEMA_DIR
+++ PS1='(pyschism_mjisan) '
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ export CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
+++ CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=pyschism_mjisan
+++ CONDA_DEFAULT_ENV=pyschism_mjisan
+++ export 'CONDA_PROMPT_MODIFIER=(pyschism_mjisan) '
+++ CONDA_PROMPT_MODIFIER='(pyschism_mjisan) '
+++ export CONDA_PREFIX_1=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ CONDA_PREFIX_1=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal ']'
++++ export GDAL_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal
++++ GDAL_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal
++++ export GDAL_DRIVER_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins
++++ GDAL_DRIVER_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins
++++ '[' '!' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins ']'
++++ export CPL_ZIP_ENCODING=UTF-8
++++ CPL_ZIP_ENCODING=UTF-8
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/epsg_csv ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/Library/share/epsg_csv ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/glib-2.0/schemas
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ for pre in ${rem}
++++ test '' = /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ conda_catalog_files=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj ']'
++++ export PROJ_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj
++++ PROJ_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj
++++ '[' -f /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj/copyright_and_licenses.csv ']'
++++ export PROJ_NETWORK=ON
++++ PROJ_NETWORK=ON
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits ']'
++++ export UDUNITS2_XML_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits/udunits2.xml
++++ UDUNITS2_XML_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits/udunits2.xml
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ SCRIPT_DIR=/home/mjisan/workflow/schism_suite/scripts/plot_water_elevation
++ cd /home/mjisan/workflow/schism_suite/scripts/plot_water_elevation
+++ pwd
++ echo 'Current working directory: /home/mjisan/workflow/schism_suite/scripts/plot_water_elevation'
+Current working directory: /home/mjisan/workflow/schism_suite/scripts/plot_water_elevation
++ echo 'Contents of current directory:'
+Contents of current directory:
++ ls -l
+total 12
+-rw-r----- 1 mjisan nosofs 4222 Sep 19 01:02 plot_water_elevation.py
+-rw-r----- 1 mjisan nosofs 3593 Sep 19 00:37 plot_water_elevation.py~
++ python plot_water_elevation.py
+DEBUG:matplotlib:matplotlib data path: /home/mjisan/.local/lib/python3.9/site-packages/matplotlib/mpl-data
+DEBUG:matplotlib:CONFIGDIR=/home/mjisan/.config/matplotlib
+DEBUG:matplotlib:interactive is False
+DEBUG:matplotlib:platform is linux
+DEBUG:matplotlib:CACHEDIR=/home/mjisan/.cache/matplotlib
+DEBUG:matplotlib.font_manager:Using fontManager instance from /home/mjisan/.cache/matplotlib/fontlist-v390.json
+DEBUG:fiona._env:GDAL_DATA found in environment.
+DEBUG:fiona._env:PROJ_DATA found in environment.
+Searching for Test_Duck directories in: /work/noaa/nosofs/mjisan/schism/schism_verification_tests
+Contents of /work/noaa/nosofs/mjisan/schism/schism_verification_tests:
+['hgrid.ll', 'Test_Duck_001', 'Test_Inun_NWaves_2D', 'Test_Convergence_Grid4', 'Test_Inun_CircularIsland_CaseB_3D', 'Test_Convergence_Grid3', 'Test_COSINE_SFBay', 'Test_HydraulicStruct', 'Test_Inun_CircularIsland_CaseB', 'Test_Convergence_Grid1', 'Test_Flat_Adjust', 'Test_Duck6', 'Test_Kuroshio', 'Test_Chezy', 'Test_CORIE', 'Test_GEN_MassConsv', 'Test_SED_meander_2', '.svn', 'Test_Btrack_Cone', 'Test_HeatConsv_Upwind', 'Tags', 'Test_WWM_Duck_V3_NEW_ELEV', 'Test_ICM_ChesBay', 'Test_ECO_Toy', 'Test_Duck_004', 'Test_WWM_Duck_V2', 'pyschism_suite.def', 'Test_CORIE_LSC2', 'Test_GEN_MassConsv2', 'workflow', 'workdir', 'Test_Nonhydro_StandingWaves', 'Test_MassSource', 'couple_test', 'Test_Nonhydro_Flat_Adjust', 'Test_WWM_Duck', 'Test_QuarterAnnulus_hvis', 'Test_FABM_COSINE_SFBay', 'Test_HeatConsv_TVD', 'Test_Inun_CircularIsland_CaseB_CPU', 'Test_Btrack_Gausshill', 'Test_Inun_NWaves_3D', 'Test_Btrack_Gausshill_CPU', 'Test_Duck7', 'Test_FABM_ICM_BOX', 'Test_Duck4', 'Test_Duck5', 'Test_Duck_SCH_STD', 'Test_DUCK_SCH', 'Test_Duck3', 'Test_Convergence_Grid5', 'Test_Geostrophic', 'Test_SED_Trench_Migration', 'Test_Duck', 'Test_Duck_002', 'Test_HeatPool', 'Test_Duck_003', 'Test_Convergence_Grid2', 'Test_Duck2', 'Test_ParaBowl', 'Test_QuarterAnnulus', 'Test_WWM_Duck_ATM']
+Latest Test_Duck directory: Test_Duck_004
+Full path: /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_004
+Contents of /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_004:
+['rough.gr3', 'PT14.sp1d', 'PT10.site', 'wwminput.nml', 'hgrid.ll', 'PT6.site', 'outputs', 'elev.ic', 'PT11.sp1d', 'watertype.gr3', 'PT11.site', 'out', 'PT12.sp1d', 'sflux_air_1.0003.nc', 'libjpeg.so.9', 'sflux_air_1.0002.nc', 'fort.5002', 'PT13.site', 'job_card', 'wwmbnd.gr3', 'PT5.sp1d', 'PT3.site', 'albedo.gr3', 'PT8.sp1d', 'PT2.sp1d', 'elev.th', 'hgrid_WWM.gr3', 'err', 'wwmbnd.ll~', 'PT4.site', 'PT12.site', 'bctides.in', 'wwmbnd.XY', 'sflux_air_1.0001.nc', 'windrot_geo2proj.gr3', 'PT7.site', 'PT5.site', 'hgrid.gr3', 'vgrid.in', 'wwmbnd.gr3.org', 'diffmax.gr3', 'pschism_HERCULES_WWM_BLD_STANDALONE_TVD-VL', 'pschism_HERCULES_BLD_STANDALONE_TVD-VL', 'DUCK94_wave_spectra_8m_array.nc', 'PT13.sp1d', 'sflux_prc_1.0001.nc', 'ww3_cnv', 'PT10.sp1d', 'PT9.site', 'wwmbnd.xy~', 'PT6.sp1d', 'sflux_prc_1.0003.nc', 'PT14.site', 'diffmin.gr3', 'PT15.site', 'PT4.sp1d', 'sflux_inputs.txt', 'PT2.site', 'wwmcheck.nml', 'sflux_prc_1.0002.nc', 'PT8.site', 'PT1.site', 'PT7.sp1d', 'PT1.sp1d', 'PT15.sp1d', 'PT9.sp1d', 'job_timestamp.txt', 'param.nml', 'PT3.sp1d']
+Contents of /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_004/outputs:
+['nonfatal_000034', 'maxdahv_000011', 'nonfatal_000013', 'maxdahv_000016', 'local_to_global_000030', 'nonfatal_000046', 'maxdahv_000067', 'local_to_global_000059', 'horizontalVelY_5.nc', 'maxdahv_000005', 'nonfatal_000035', 'local_to_global_000064', 'maxdahv_000063', 'horizontalVelX_1.nc', 'maxdahv_000058', 'maxelev_000025', 'local_to_global_000050', 'nonfatal_000051', 'maxdahv_000050', 'verticalVelocity_2.nc', 'local_to_global_000014', 'zCoordinates_3.nc', 'salinity_8.nc', 'local_to_global_000011', 'salinity_5.nc', 'local_to_global_000019', 'out2d_7.nc', 'local_to_global_000066', 'local_to_global_000060', 'mirror.out.scribe', 'nonfatal_000054', 'maxelev_000028', 'local_to_global_000045', 'maxdahv_000051', 'local_to_global_000004', 'local_to_global_000070', 'maxelev_000013', 'maxdahv_000049', 'maxdahv_000070', 'temperature_3.nc', 'horizontalVelX_8.nc', 'local_to_global_000058', 'local_to_global_000027', 'viscosity_5.nc', 'maxelev_000035', 'maxdahv_000068', 'diffusivity_8.nc', 'local_to_global_000051', 'nonfatal_000004', 'maxelev_000034', 'nonfatal_000041', 'nonfatal_000048', 'maxdahv_000041', 'nonfatal_000038', 'zCoordinates_1.nc', 'local_to_global_000005', 'maxelev_000026', 'nonfatal_000001', 'local_to_global_000057', 'local_to_global_000015', 'local_to_global_000065', 'temperature_4.nc', 'nonfatal_000053', 'maxdahv_000048', 'local_to_global_000007', 'local_to_global_000006', 'fatal.error', 'maxelev_000006', 'maxdahv_000053', 'maxelev_000003', 'maxelev_000037', 'maxdahv_000055', 'local_to_global_000026', 'maxelev_000011', 'nonfatal_000012', 'local_to_global_000032', 'diffusivity_5.nc', 'maxdahv_000012', 'local_to_global_000016', 'nonfatal_000017', 'nonfatal_000031', 'maxdahv_000035', 'local_to_global_000000', 'maxdahv_000030', 'local_to_global_000035', 'nonfatal_000045', 'maxdahv_000064', 'nonfatal_000006', 'maxdahv_000057', 'maxdahv_000043', 'diffusivity_6.nc', 'nonfatal_000027', 'maxdahv_000027', 'maxelev_000038', 'salinity_7.nc', 'nonfatal_000005', 'salinity_4.nc', 'maxdahv_000002', 'maxdahv_000014', 'JCG.out', 'local_to_global_000033', 'nonfatal_000022', 'local_to_global_000062', 'temperature_6.nc', 'nonfatal_000025', 'salinity_6.nc', 'horizontalVelX_4.nc', 'maxelev_000059', 'nonfatal_000066', 'maxelev_000030', 'diffusivity_2.nc', 'local_to_global_000043', 'local_to_global_000069', 'nonfatal_000069', 'zCoordinates_4.nc', 'maxdahv_000042', 'zCoordinates_8.nc', 'maxdahv_000028', 'local_to_global_000068', 'nonfatal_000039', 'maxelev_000054', 'maxelev_000020', 'local_to_global_000008', 'nonfatal_000028', 'viscosity_4.nc', 'nonfatal_000065', 'local_to_global_000039', 'maxdahv_000026', 'param.out.nml', 'local_to_global_000023', 'nonfatal_000067', 'nonfatal_000047', 'maxelev_000031', 'nonfatal_000000', 'maxelev_000043', 'maxdahv_000061', 'maxdahv_000046', 'local_to_global_000031', 'maxelev_000018', 'verticalVelocity_7.nc', 'nonfatal_000020', 'maxdahv_000029', 'nonfatal_000036', 'maxelev_000063', 'maxelev_000055', 'local_to_global_000028', 'horizontalVelY_1.nc', 'mirror.out', 'local_to_global_000048', 'nonfatal_000032', 'local_to_global_000047', 'maxelev_000057', 'maxdahv_000033', 'maxelev_000010', 'maxelev_000024', 'maxdahv_000062', 'nonfatal_000008', 'nonfatal_000009', 'maxelev_000001', 'maxdahv_000031', 'nonfatal_000030', 'maxdahv_000060', 'local_to_global_000029', 'local_to_global_000036', 'nonfatal_000040', 'maxelev_000065', 'local_to_global_000020', 'nonfatal_000033', 'maxelev_000032', 'nonfatal_000023', 'nonfatal_000015', 'maxelev_000029', 'maxdahv_000039', 'maxdahv_000009', 'nonfatal_000021', 'local_to_global_000012', 'horizontalVelY_4.nc', 'maxdahv_000008', 'total.out', 'maxdahv_000010', 'maxelev_000051', 'local_to_global_000025', 'nonfatal_000043', 'maxelev_000070', 'nonfatal_000060', 'local_to_global_000024', 'maxelev_000041', 'local_to_global_000009', 'total_TR.out', 'maxdahv_000007', 'maxelev_000048', 'local_to_global_000037', 'salinity_1.nc', 'local_to_global_000003', 'nonfatal_000002', 'verticalVelocity_6.nc', 'maxelev_000069', 'nonfatal_000070', 'nonfatal_000007', 'local_to_global_000052', 'maxelev_000014', 'maxdahv_000025', 'local_to_global_000042', 'out2d_5.nc', 'maxdahv_000023', 'local_to_global_000061', 'maxdahv_000066', 'verticalVelocity_3.nc', 'zCoordinates_7.nc', 'maxdahv_000017', 'viscosity_3.nc', 'maxdahv_000047', 'maxelev_000066', 'local_to_global_000001', 'viscosity_2.nc', 'out2d_2.nc', 'local_to_global_000067', 'nonfatal_000063', 'maxelev_000019', 'maxdahv_000000', 'maxelev_000040', 'maxelev_000064', 'verticalVelocity_4.nc', 'maxelev_000012', 'viscosity_8.nc', 'horizontalVelX_5.nc', 'horizontalVelY_8.nc', 'diffusivity_1.nc', 'maxdahv_000069', 'local_to_global_000053', 'nonfatal_000010', 'flux.out', 'horizontalVelX_6.nc', 'diffusivity_7.nc', 'maxelev_000005', 'maxdahv_000032', 'horizontalVelX_2.nc', 'maxdahv_000038', 'verticalVelocity_1.nc', 'maxelev_000053', 'local_to_global_000017', 'maxelev_000052', 'maxelev_000058', 'out2d_1.nc', 'nonfatal_000016', 'maxdahv_000024', 'nonfatal_000057', 'verticalVelocity_8.nc', 'viscosity_7.nc', 'maxdahv_000044', 'zCoordinates_5.nc', 'maxelev_000046', 'local_to_global_000054', 'maxelev_000036', 'nonfatal_000062', 'nonfatal_000056', 'zCoordinates_6.nc', 'nonfatal_000029', 'diffusivity_3.nc', 'maxdahv_000004', 'maxelev_000061', 'nonfatal_000011', 'maxelev_000002', 'verticalVelocity_5.nc', 'maxelev_000062', 'maxelev_000050', 'maxdahv_000001', 'maxelev_000022', 'temperature_5.nc', 'nonfatal_000026', 'maxdahv_000019', 'maxelev_000009', 'maxelev_000033', 'global_to_local.prop', 'local_to_global_000055', 'local_to_global_000056', 'local_to_global_000034', 'horizontalVelX_3.nc', 'viscosity_1.nc', 'nonfatal_000042', 'nonfatal_000018', 'maxdahv_000045', 'viscosity_6.nc', 'maxdahv_000034', 'nonfatal_000019', 'salinity_3.nc', 'maxelev_000015', 'maxdahv_000015', 'local_to_global_000040', 'local_to_global_000038', 'horizontalVelY_6.nc', 'nonfatal_000064', 'nonfatal_000024', 'maxdahv_000059', 'local_to_global_000021', 'maxelev_000000', 'maxdahv_000065', 'maxdahv_000056', 'maxdahv_000006', 'maxelev_000016', 'nonfatal_000052', 'local_to_global_000046', 'maxdahv_000003', 'maxdahv_000022', 'temperature_2.nc', 'maxdahv_000018', 'out2d_3.nc', 'nonfatal_000050', 'maxelev_000007', 'out2d_6.nc', 'zCoordinates_2.nc', 'diffusivity_4.nc', 'maxdahv_000021', 'local_to_global_000049', 'maxelev_000047', 'nonfatal_000003', 'maxdahv_000020', 'nonfatal_000014', 'maxelev_000045', 'out2d_4.nc', 'local_to_global_000018', 'horizontalVelY_7.nc', 'horizontalVelX_7.nc', 'nonfatal_000055', 'maxdahv_000013', 'maxelev_000068', 'maxdahv_000040', 'maxdahv_000037', 'temperature_8.nc', 'temperature_1.nc', 'maxelev_000027', 'maxelev_000044', 'horizontalVelY_2.nc', 'maxelev_000039', 'temperature_7.nc', 'local_to_global_000002', 'local_to_global_000010', 'out2d_8.nc', 'maxdahv_000036', 'maxelev_000060', 'maxelev_000042', 'horizontalVelY_3.nc', 'maxdahv_000052', 'salinity_2.nc', 'subcycling.out', 'maxdahv_000054', 'nonfatal_000059', 'nonfatal_000049', 'maxelev_000008', 'local_to_global_000013', 'local_to_global_000022', 'nonfatal_000044', 'local_to_global_000063', 'maxelev_000004', 'maxelev_000021', 'nonfatal_000058', 'maxelev_000023', 'nonfatal_000061', 'maxelev_000056', 'nonfatal_000068', 'maxelev_000067', 'maxelev_000017', 'maxelev_000049', 'nonfatal_000037', 'local_to_global_000044', 'local_to_global_000041']
+Traceback (most recent call last):
+  File "/home/mjisan/workflow/schism_suite/scripts/plot_water_elevation/plot_water_elevation.py", line 116, in <module>
+    main()
+  File "/home/mjisan/workflow/schism_suite/scripts/plot_water_elevation/plot_water_elevation.py", line 64, in main
+    if not wait_for_output_files(outputs_dir):
+  File "/home/mjisan/workflow/schism_suite/scripts/plot_water_elevation/plot_water_elevation.py", line 13, in wait_for_output_files
+    start_time = time.time()
+NameError: name 'time' is not defined
++ ERROR
++ set +e
++ wait
++ ecflow_client --abort=trap
++ trap 0
++ exit 0

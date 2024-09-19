@@ -1,5 +1,5 @@
 #!/bin/bash
-#%include <head.h>
+%include <head.h>
 #%include <tail.h>
 
 # Set the path to conda.sh
@@ -15,7 +15,7 @@ fi
 source "$CONDA_SH"
 
 # Activate the PySCHISM environment
-conda activate pyschism_env2
+conda activate pyschism_mjisan
 
 # Set variables
 START_YEAR="1994"
@@ -32,4 +32,6 @@ python gen_namelist.py --year $START_YEAR --month $START_MONTH --day $START_DAY 
 
 conda deactivate
 
-ecflow_client --port 3141 --label=info "namelist generation complete"
+ecflow_client --label=info "namelist generation complete"
+
+%include <tail.h>

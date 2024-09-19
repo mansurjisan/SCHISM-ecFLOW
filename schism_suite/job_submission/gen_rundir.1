@@ -1,0 +1,302 @@
++ set -o pipefail
++ export ECF_PORT=3141
++ ECF_PORT=3141
++ export ECF_HOST=hercules-01-06
++ ECF_HOST=hercules-01-06
++ export ECF_NAME=/schism_suite/job_submission/gen_rundir
++ ECF_NAME=/schism_suite/job_submission/gen_rundir
++ export ECF_PASS=WHwvh1Xc
++ ECF_PASS=WHwvh1Xc
++ export ECF_TRYNO=1
++ ECF_TRYNO=1
++ export ECF_RID=702738
++ ECF_RID=702738
++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ ecflow_client --init=702738
++ trap ERROR 0
++ trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
++ CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
++ '[' '!' -f /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh ']'
++ source /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ '[' -z x ']'
++ conda activate pyschism_mjisan
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate pyschism_mjisan
++ '[' -n '' ']'
++ local ask_conda
+++ PS1=
+++ __conda_exe shell.posix activate pyschism_mjisan
+++ /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda shell.posix activate pyschism_mjisan
++ ask_conda='. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(pyschism_mjisan) '\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
+export CONDA_PROMPT_MODIFIER='\''(pyschism_mjisan) '\''
+export CONDA_PREFIX_1='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
++ eval '. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(pyschism_mjisan) '\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
+export CONDA_PROMPT_MODIFIER='\''(pyschism_mjisan) '\''
+export CONDA_PREFIX_1='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh
++++ test -n ''
++++ unset XML_CATALOG_FILES
++++ unset xml_catalog_files_libxml2
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh
++++ export GSETTINGS_SCHEMA_DIR=
++++ GSETTINGS_SCHEMA_DIR=
++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
++++ '[' -z ']'
++++ unset GSETTINGS_SCHEMA_DIR
+++ PS1='(pyschism_mjisan) '
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ export CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
+++ CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=pyschism_mjisan
+++ CONDA_DEFAULT_ENV=pyschism_mjisan
+++ export 'CONDA_PROMPT_MODIFIER=(pyschism_mjisan) '
+++ CONDA_PROMPT_MODIFIER='(pyschism_mjisan) '
+++ export CONDA_PREFIX_1=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ CONDA_PREFIX_1=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal ']'
++++ export GDAL_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal
++++ GDAL_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdal
++++ export GDAL_DRIVER_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins
++++ GDAL_DRIVER_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins
++++ '[' '!' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/gdalplugins ']'
++++ export CPL_ZIP_ENCODING=UTF-8
++++ CPL_ZIP_ENCODING=UTF-8
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/epsg_csv ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/Library/share/epsg_csv ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/glib-2.0/schemas
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ for pre in ${rem}
++++ test '' = /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ conda_catalog_files=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj ']'
++++ export PROJ_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj
++++ PROJ_DATA=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj
++++ '[' -f /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj/copyright_and_licenses.csv ']'
++++ export PROJ_NETWORK=ON
++++ PROJ_NETWORK=ON
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh
++++ '[' -n '' ']'
++++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits ']'
++++ export UDUNITS2_XML_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits/udunits2.xml
++++ UDUNITS2_XML_PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/udunits/udunits2.xml
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ START_YEAR=1994
++ START_MONTH=10
++ START_DAY=12
++ START_HOUR=17
++ RNDAY=3
++ PREPROCESS=/home/mjisan/workflow/pyschism_suite
++ cd /home/mjisan/workflow/pyschism_suite/scripts/Job_dir
++ python gen_rundir.py
+Created new run directory: /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_005
+Created 'outputs' subdirectory: /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_005/outputs
+Copied all files from /home/mjisan/workflow/pyschism_suite/workdir to /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_005
+Copied all files from /home/mjisan/workflow/pyschism_suite/fix to /work/noaa/nosofs/mjisan/schism/schism_verification_tests/Test_Duck_005
++ conda deactivate
++ local cmd=deactivate
++ case "$cmd" in
++ __conda_activate deactivate
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(pyschism_mjisan) '
+++ __conda_exe shell.posix deactivate
+++ /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda shell.posix deactivate
++ ask_conda='export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libglib_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/geotiff-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/gdal-deactivate.sh"
+unset CONDA_PREFIX_1
+PS1='\''(myecflow) '\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''myecflow'\''
+export CONDA_PROMPT_MODIFIER='\''(myecflow) '\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh"'
++ eval 'export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libglib_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/geotiff-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/gdal-deactivate.sh"
+unset CONDA_PREFIX_1
+PS1='\''(myecflow) '\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''myecflow'\''
+export CONDA_PROMPT_MODIFIER='\''(myecflow) '\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh"'
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh
++++ unset UDUNITS2_XML_PATH
++++ '[' -n '' ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh
++++ unset PROJ_DATA
++++ unset PROJ_NETWORK
++++ '[' -n '' ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh
++++ test -n ''
++++ unset XML_CATALOG_FILES
++++ unset xml_catalog_files_libxml2
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libglib_deactivate.sh
++++ export GSETTINGS_SCHEMA_DIR=
++++ GSETTINGS_SCHEMA_DIR=
++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
++++ '[' -z ']'
++++ unset GSETTINGS_SCHEMA_DIR
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/geotiff-deactivate.sh
++++ unset GEOTIFF_CSV
++++ '[' -n '' ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/gdal-deactivate.sh
++++ unset GDAL_DATA
++++ '[' -n '' ']'
++++ unset GDAL_DRIVER_PATH
++++ '[' -n '' ']'
++++ unset CPL_ZIP_ENCODING
+++ unset CONDA_PREFIX_1
+++ PS1='(myecflow) '
+++ export CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ export CONDA_SHLVL=1
+++ CONDA_SHLVL=1
+++ export CONDA_DEFAULT_ENV=myecflow
+++ CONDA_DEFAULT_ENV=myecflow
+++ export 'CONDA_PROMPT_MODIFIER=(myecflow) '
+++ CONDA_PROMPT_MODIFIER='(myecflow) '
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/share/glib-2.0/schemas
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
++++ for pre in ${rem}
++++ test '' = /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
++++ conda_catalog_files=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ ecflow_client --port 3141 --label=info 'Directory setup complete'
++ wait
++ ecflow_client --complete
++ trap 0
++ exit 0

@@ -1,6 +1,5 @@
 #!/bin/bash
-#%include <head.h>
-#%include <tail.h>
+%include <head.h>
 
 # Set the path to conda.sh
 CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
@@ -20,9 +19,7 @@ conda activate pyschism_mjisan
 PREPROCESS="/home/mjisan/workflow/pyschism_suite"
 
 # Change to the directory containing script
-
 cd $PREPROCESS/scripts/Manning/
-
 
 python gen_gr3_input.py
 
@@ -33,4 +30,7 @@ mv $PREPROCESS/workdir/elev.gr3 $PREPROCESS/workdir/elev.ic
 # Deactivate the PySCHISM environment if needed
 conda deactivate
 
-echo "Manning's roughness generation complete"
+# Update ecFlow with task completion
+ecflow_client --label=info "roughness generation complete"
+
+%include <tail.h>

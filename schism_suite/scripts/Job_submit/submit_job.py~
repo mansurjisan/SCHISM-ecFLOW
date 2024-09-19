@@ -1,0 +1,58 @@
+import os
+import subprocess
+import argparse
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def submit_job(job_card_path):
+    """
+    Submit a job using sbatch with the specified job card.
+    
+    Args:
+    job_card_path (str): Path to the job card file
+    
+    Returns:
+    int: The job ID if successful, None otherwise
+    """
+    if not os.path.exists(job_card_path):
+        logging.error(f"Job card not found: {job_card_path}")
+        return None
+
+    try:
+        # Run sbatch command
+        result = subprocess.run(['sbatch', job_card_path], 
+                                check=True, 
+                                stdout=subprocess.PIPE, 
+                                stderr=subprocess.PIPE,
+                                universal_newlines=True)
+        
+        # Extract job ID from sbatch output
+        job_id = result.stdout.strip().split()[-1]
+        logging.info(f"Job submitted successfully. Job ID: {job_id}")
+        return job_id
+    
+    except subprocess.CalledProcessError as e:
+        logging.error(f"Failed to submit job. Error: {e}")
+        logging.error(f"STDERR: {e.stderr}")
+        return None
+
+def main():
+    parser = argparse.ArgumentParser(description="Submit a SCHISM job using sbatch")
+    parser.add_argument("--job_card", default="job_card", help="Path to the job card file")
+    args = parser.parse_args()
+
+    # Get the full path of the job card
+    job_card_path = os.path.abspath(args.job_card)
+
+    # Submit the job
+    job_id = submit_job(job_card_path)
+
+    if job_id:
+        print(f"Job submitted successfully. Job ID: {job_id}")
+    else:
+        print("Failed to submit job. Check the logs for more information.")
+
+if __name__ == "__main__":
+    main()

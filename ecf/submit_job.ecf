@@ -1,0 +1,33 @@
+#!/bin/bash
+#%include <head.h>
+#%include <tail.h>
+%include <head.h>
+
+# Set the path to conda.sh
+CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+
+# Check if conda.sh exists
+if [ ! -f "$CONDA_SH" ]; then
+    echo "Error: Could not find conda.sh at $CONDA_SH"
+    exit 1
+fi
+
+# Initialize conda
+source "$CONDA_SH"
+
+# Activate the PySCHISM environment
+conda activate pyschism_env2
+
+# Set variables
+BASE_PATH="/work/noaa/nosofs/mjisan/schism/schism_verification_tests"
+SCRIPT_PATH="/home/mjisan/workflow/pyschism_suite/scripts/Job_submit/submit_job.py"
+
+# Run the submit_job.py script
+python $SCRIPT_PATH --base_path=$BASE_PATH
+
+# Deactivate the conda environment
+conda deactivate
+
+ecflow_client --port 3141 --label=info "Job submission complete"
+
+%include <tail.h>
