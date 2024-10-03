@@ -1,0 +1,88 @@
+#!/bin/bash
+#!/bin/bash
+
+set -e          # stop the shell on first error
+set -u          # fail when using an undefined variable
+set -x          # echo script lines as they are executed
+set -o pipefail # fail if last(rightmost) command exits with a non-zero status
+ 
+# Defines the variables that are needed for any communication with ECF
+export ECF_PORT=3141    # The server port number
+export ECF_HOST=hercules-01-06    # The host name where the server is running
+export ECF_NAME=/ufs_coastal_suite/compile/compile_model_with_waves    # The name of this current task
+export ECF_PASS=N.8sBibU    # A unique password, used for job validation & zombie detection
+export ECF_TRYNO=1  # Current try number of the task
+export ECF_RID=$$             # record the process id. Also used for zombie detection
+# export NO_ECF=1             # uncomment to run as a standalone task on the command line
+ 
+# Define the path where to find ecflow_client
+# make sure client and server use the *same* version.
+# Important when there are multiple versions of ecFlow
+#export PATH=/usr/local/apps/ecflow/5.13.3/bin:$PATH
+export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:$PATH
+ 
+# Tell ecFlow we have started
+ecflow_client --init=$$
+ 
+ 
+# Define a error handler
+ERROR() {
+   set +e                      # Clear -e flag, so we don't fail
+   wait                        # wait for background process to stop
+   ecflow_client --abort=trap  # Notify ecFlow that something went wrong, using 'trap' as the reason
+   trap 0                      # Remove the trap
+   exit 0                      # End the script cleanly, server monitors child, an exit 1, will cause another abort and zombie
+}
+ 
+ 
+# Trap any calls to exit and errors caught by the -e flag
+trap ERROR 0
+ 
+ 
+# Trap any signal that may cause the script to fail
+trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
+
+# Set the path to conda.sh
+CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+
+# Check if conda.sh exists
+if [ ! -f "$CONDA_SH" ]; then
+    echo "Error: Could not find conda.sh at $CONDA_SH"
+    exit 1
+fi
+
+# Initialize conda
+source "$CONDA_SH"
+
+# Activate the appropriate conda environment if needed
+# conda activate your_environment_name
+
+# Set variables
+UFS_COASTAL_DIR="/work/noaa/nosofs/mjisan/ufs-weather-model/tests"  # Adjust this path
+
+# Change to the UFS Coastal directory
+cd $UFS_COASTAL_DIR
+
+# Set compilation flags
+COMPILE_FLAGS="-DAPP=CSTLSW -DUSE_ATMOS=ON -DUSE_WW3=ON -DNO_PARMETIS=OFF -DOLDIO=ON -DPDLIB=ON -DBUILD_UTILS=ON"
+
+# Run the compilation command
+./compile.sh hercules "$COMPILE_FLAGS" coastalSW intel YES NO
+
+# Check if compilation was successful
+if [ $? -eq 0 ]; then
+    echo "Compilation successful"
+    ecflow_client --label=info "Compilation complete"
+else
+    echo "Compilation failed"
+    ecflow_client --label=error "Compilation failed"
+    exit 1
+fi
+
+# Deactivate the conda environment if one was activated
+# conda deactivate
+
+wait                      # wait for background process to stop
+ecflow_client --complete  # Notify ecFlow of a normal end
+trap 0                    # Remove all traps
+exit 0                    # End the shell

@@ -1,0 +1,30 @@
+suite ufs_coastal_suite
+  edit ECF_HOME '/home/mjisan/workflow'
+  edit ECF_INCLUDE '/home/mjisan/workflow'
+  edit UFS_CLUSTER 'hercules'  # Adjust as needed
+  edit RUN_TYPE 'coastal_ike_shinnecock'  # Can be customized for different run types
+
+  family compile
+    task compile_model
+      event wave_coupling_off  # Event defined at task level
+      trigger compile_model:wave_coupling_off == set  # Trigger when wave_coupling_off is set
+      edit ECF_SCRIPT '%ECF_HOME%/ecf/compile_model.ecf'
+      edit APP 'CSTLS'
+      edit USE_ATMOS 'ON'
+      edit NO_PARMETIS 'OFF'
+      edit OLDIO 'ON'
+      edit BUILD_UTILS 'ON'
+
+    task compile_model_with_waves
+      event wave_coupling_on  # Event defined at task level
+      trigger compile_model_with_waves:wave_coupling_on == set  # Trigger when wave_coupling_on is set
+      edit ECF_SCRIPT '%ECF_HOME%/ecf/compile_model_with_waves.ecf'
+      edit APP 'CSTLSW'
+      edit USE_ATMOS 'ON'
+      edit USE_WW3 'ON'
+      edit NO_PARMETIS 'OFF'
+      edit OLDIO 'ON'
+      edit PDLIB 'ON'
+      edit BUILD_UTILS 'ON'
+  endfamily
+endsuite
