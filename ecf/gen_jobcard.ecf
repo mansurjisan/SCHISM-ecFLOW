@@ -17,7 +17,7 @@ source "$CONDA_SH"
 conda activate pyschism_mjisan
 
 # Set variables
-PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+PREPROCESS="/home/mjisan/workflow/schism_suite"
 
 # Change to the directory containing script
 cd $PREPROCESS/scripts/Job_card/

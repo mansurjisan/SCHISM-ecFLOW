@@ -16,21 +16,18 @@ source "$CONDA_SH"
 # Activate the PySCHISM environment
 conda activate pyschism_mjisan
 
-PREPROCESS="/home/mjisan/workflow/schism_suite"
+# Set variables
+PREPROCESS="/home/mjisan/workflow/pyschism_suite"
 
 # Change to the directory containing script
-cd $PREPROCESS/scripts/Manning/
+cd $PREPROCESS/scripts/Job_card/
 
-python gen_gr3_input.py
+# Run the gen_jobcard.py script with the run type and cluster
+python gen_jobcard.py --run_type=%SCHISM_RUN_TYPE% --cluster=%SCHISM_CLUSTER%
 
-sleep 5
-
-mv $PREPROCESS/workdir/elev.gr3 $PREPROCESS/workdir/elev.ic
-
-# Deactivate the PySCHISM environment if needed
+# Deactivate the conda environment
 conda deactivate
 
-# Update ecFlow with task completion
-ecflow_client --label=info "roughness generation complete"
+ecflow_client --label=info "job card generation complete"
 
 %include <tail.h>

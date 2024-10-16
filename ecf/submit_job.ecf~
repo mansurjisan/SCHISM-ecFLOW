@@ -1,4 +1,6 @@
 #!/bin/bash
+#%include <head.h>
+#%include <tail.h>
 %include <head.h>
 
 # Set the path to conda.sh
@@ -14,23 +16,18 @@ fi
 source "$CONDA_SH"
 
 # Activate the PySCHISM environment
-conda activate pyschism_mjisan
+conda activate pyschism_env2
 
-PREPROCESS="/home/mjisan/workflow/schism_suite"
+# Set variables
+BASE_PATH="/work/noaa/nosofs/mjisan/schism/schism_verification_tests"
+SCRIPT_PATH="/home/mjisan/workflow/pyschism_suite/scripts/Job_submit/submit_job.py"
 
-# Change to the directory containing script
-cd $PREPROCESS/scripts/Manning/
+# Run the submit_job.py script
+python $SCRIPT_PATH --base_path=$BASE_PATH
 
-python gen_gr3_input.py
-
-sleep 5
-
-mv $PREPROCESS/workdir/elev.gr3 $PREPROCESS/workdir/elev.ic
-
-# Deactivate the PySCHISM environment if needed
+# Deactivate the conda environment
 conda deactivate
 
-# Update ecFlow with task completion
-ecflow_client --label=info "roughness generation complete"
+ecflow_client --port 3141 --label=info "Job submission complete"
 
 %include <tail.h>

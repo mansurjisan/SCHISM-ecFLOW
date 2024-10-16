@@ -1,6 +1,7 @@
 #!/bin/bash
 %include <head.h>
 
+
 # Set the path to conda.sh
 CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
 
@@ -16,21 +17,26 @@ source "$CONDA_SH"
 # Activate the PySCHISM environment
 conda activate pyschism_mjisan
 
-PREPROCESS="/home/mjisan/workflow/schism_suite"
+# Set variables
+START_YEAR="1994"
+START_MONTH="10"
+START_DAY="12"
+START_HOUR="17"
+RNDAY=3
+PREPROCESS="/home/mjisan/workflow/pyschism_suite"
 
-# Change to the directory containing script
-cd $PREPROCESS/scripts/Manning/
+# Run the gen_sflux_era5.py script
+cd $PREPROCESS/scripts/Job_card
 
-python gen_gr3_input.py
 
-sleep 5
+python gen_jobcard.py --cluster hercules #Standalone SCHISM in Hercules
 
-mv $PREPROCESS/workdir/elev.gr3 $PREPROCESS/workdir/elev.ic
 
-# Deactivate the PySCHISM environment if needed
+#python gen_jobcard.py --cluster hercules --wwm #Coupled SCHISM-WWM Module
+
+
 conda deactivate
 
-# Update ecFlow with task completion
-ecflow_client --label=info "roughness generation complete"
+ecflow_client --port 3141 --label=info "Job car generation setup complete"
 
 %include <tail.h>

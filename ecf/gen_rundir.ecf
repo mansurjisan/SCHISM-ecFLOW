@@ -23,7 +23,7 @@ START_MONTH="10"
 START_DAY="12"
 START_HOUR="17"
 RNDAY=3
-PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+PREPROCESS="/home/mjisan/workflow/schism_suite"
 
 # Run the gen_sflux_era5.py script
 cd $PREPROCESS/scripts/Job_dir

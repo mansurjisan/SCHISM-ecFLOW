@@ -19,14 +19,15 @@ source "$CONDA_SH"
 # Set variables
 UFS_COASTAL_DIR="/work/noaa/nosofs/mjisan/ufs-weather-model/tests"  # Adjust this path
 
-# Change to the UFS Coastal directory
+
+# Create build directory if it doesn't exist
 cd $UFS_COASTAL_DIR
 
 # Set compilation flags
-COMPILE_FLAGS="-DAPP=%APP% -DUSE_ATMOS=%USE_ATMOS% -DUSE_WW3=%USE_WW3% -DNO_PARMETIS=%NO_PARMETIS% -DOLDIO=%OLDIO% -DPDLIB=%PDLIB%"
+COMPILE_FLAGS="-DAPP=%APP% -DUSE_ATMOS=%USE_ATMOS% -DNO_PARMETIS=%NO_PARMETIS% -DOLDIO=%OLDIO% -DBUILD_UTILS=%BUILD_UTILS%"
 
 # Run the compilation command
-./compile.sh %UFS_CLUSTER% "$COMPILE_FLAGS" coastalSW intel YES NO
+./compile.sh %UFS_CLUSTER% "$COMPILE_FLAGS" coastalS intel YES NO
 
 # Check if compilation was successful
 if [ $? -eq 0 ]; then

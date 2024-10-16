@@ -6,25 +6,25 @@ suite ufs_coastal_suite
 
   family compile
     task compile_model
-      event wave_coupling_off  # Event defined at task level
+      event wave_coupling_off  # Event defined at task level (DATM+SCHISM)
       trigger compile_model:wave_coupling_off == set  # Trigger when wave_coupling_off is set
-      edit ECF_SCRIPT '%ECF_HOME%/ecf/compile_model.ecf'
+      edit ECF_SCRIPT '%ECF_HOME%/ecf/compile_model_combined.ecf'  # Use the combined .ecf file
       edit APP 'CSTLS'
       edit USE_ATMOS 'ON'
       edit NO_PARMETIS 'OFF'
       edit OLDIO 'ON'
       edit BUILD_UTILS 'ON'
+      edit USE_WW3 'OFF'  # Set to OFF since wave coupling is disabled
 
     task compile_model_with_waves
-      event wave_coupling_on  # Event defined at task level
+      event wave_coupling_on  # Event defined at task level (DATM+SCHISM+WW3)
       trigger compile_model_with_waves:wave_coupling_on == set  # Trigger when wave_coupling_on is set
-      edit ECF_SCRIPT '%ECF_HOME%/ecf/compile_model_with_waves.ecf'
+      edit ECF_SCRIPT '%ECF_HOME%/ecf/compile_model_combined.ecf'  # Use the combined .ecf file
       edit APP 'CSTLSW'
       edit USE_ATMOS 'ON'
-      edit USE_WW3 'ON'
+      edit USE_WW3 'ON'  # Set to ON since wave coupling is enabled
       edit NO_PARMETIS 'OFF'
       edit OLDIO 'ON'
       edit PDLIB 'ON'
-      edit BUILD_UTILS 'ON'
   endfamily
 endsuite

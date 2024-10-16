@@ -25,8 +25,8 @@ BCTYPES='[[1,0,0,0]]'
 CONSTITUENTS="Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1"
 DATABASE="tpxo"
 SCRIPT_PATH="../scripts/Bnd/"
-PREPROCESS="/home/mjisan/workflow/schism_suite"
-
+PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+/home/mjisan/workflow/pyschism_suite
 # Run the gen_bctides.py script
 python $PREPROCESS/gen_bctides.py $HGRID_PATH $START_DATE $RNDAY "$BCTYPES" $CONSTITUENTS $DATABASE \
     --earth_tidal_potential Y \
