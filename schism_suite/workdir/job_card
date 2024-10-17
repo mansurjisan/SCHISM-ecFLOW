@@ -27,7 +27,7 @@ echo "Model started:  " $(date)
 # Number of scribes
 NUM_SCRIBES=9
 # SCHISM executable
-SCHISM_EXEC=./pschism_HERCULES_BLD_STANDALONE_TVD-VL
+SCHISM_EXEC=./pschism_HERCULES_WWM_BLD_STANDALONE_TVD-VL
 # Run SCHISM with srun
 srun --label -n $SLURM_NTASKS $SCHISM_EXEC $NUM_SCRIBES
 echo "Model ended:    " $(date)

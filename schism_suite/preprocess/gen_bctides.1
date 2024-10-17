@@ -1,19 +1,19 @@
 + set -o pipefail
 + export ECF_PORT=3141
 + ECF_PORT=3141
-+ export ECF_HOST=hercules-01-06
-+ ECF_HOST=hercules-01-06
++ export ECF_HOST=hercules-02-03
++ ECF_HOST=hercules-02-03
 + export ECF_NAME=/schism_suite/preprocess/gen_bctides
 + ECF_NAME=/schism_suite/preprocess/gen_bctides
-+ export ECF_PASS=9OiMRFbF
-+ ECF_PASS=9OiMRFbF
++ export ECF_PASS=dXnT/spK
++ ECF_PASS=dXnT/spK
 + export ECF_TRYNO=1
 + ECF_TRYNO=1
-+ export ECF_RID=703077
-+ ECF_RID=703077
++ export ECF_RID=3239052
++ ECF_RID=3239052
 + export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
 + PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-+ ecflow_client --init=703077
++ ecflow_client --init=3239052
 + trap ERROR 0
 + trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
 + CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
@@ -162,16 +162,15 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 + '[' -n '' ']'
 + '[' -n '' ']'
 + hash -r
-+ HGRID_PATH=../../fix/hgrid.ll
++ HGRID_PATH=/home/mjisan/workflow/schism_suite/fix/hgrid.ll
 + START_DATE=1994-10-12
 + RNDAY=1.0
 + BCTYPES='[[1,0,0,0]]'
 + CONSTITUENTS=Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1
 + DATABASE=tpxo
-+ SCRIPT_PATH=../scripts/Bnd/
-+ PREPROCESS=/home/mjisan/workflow/pyschism_suite
-+ cd /home/mjisan/workflow/pyschism_suite/scripts/Bnd/
-+ python gen_bctides.py ../../fix/hgrid.ll 1994-10-12 1.0 '[[1,0,0,0]]' Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1 tpxo --earth_tidal_potential Y --cutoff_depth 0
++ SCRIPT_PATH=/home/mjisan/workflow/schism_suite/scripts/Bnd/
++ PREPROCESS=/home/mjisan/workflow/schism_suite/scripts/Bnd
++ python /home/mjisan/workflow/schism_suite/scripts/Bnd/gen_bctides.py /home/mjisan/workflow/schism_suite/fix/hgrid.ll 1994-10-12 1.0 '[[1,0,0,0]]' Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1 tpxo --earth_tidal_potential Y --cutoff_depth 0
 DEBUG:matplotlib:matplotlib data path: /home/mjisan/.local/lib/python3.9/site-packages/matplotlib/mpl-data
 DEBUG:matplotlib:CONFIGDIR=/home/mjisan/.config/matplotlib
 DEBUG:matplotlib:interactive is False
@@ -181,7 +180,7 @@ DEBUG:matplotlib.font_manager:Using fontManager instance from /home/mjisan/.cach
 DEBUG:fiona._env:GDAL_DATA found in environment.
 DEBUG:fiona._env:PROJ_DATA found in environment.
 Parsed bctype list: [[1, 0, 0, 0]]
-Output directory: /home/mjisan/workflow/pyschism_suite/workdir
+Output directory: /home/mjisan/workflow/schism_suite/workdir
 + conda deactivate
 + local cmd=deactivate
 + case "$cmd" in
@@ -303,7 +302,7 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 + '[' -n '' ']'
 + '[' -n '' ']'
 + hash -r
-+ ecflow_client --label=info 'bctides.in generation complete'
++ ecflow_client --label=info 'bctides generation complete'
 + wait
 + ecflow_client --complete
 + trap 0

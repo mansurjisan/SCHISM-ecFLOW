@@ -30,8 +30,8 @@ else
 fi
 
 # Run the chosen namelist generation script
-python $SCRIPT_NAME --run_type=%SCHISM_RUN_TYPE%
-
+#python $SCRIPT_NAME --run_type=%SCHISM_RUN_TYPE%
+python $SCRIPT_NAME --year 1994 --month 10 --day 12 --hour 17
 # Deactivate the conda environment
 conda deactivate
 

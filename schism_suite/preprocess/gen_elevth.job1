@@ -8,9 +8,9 @@ set -o pipefail # fail if last(rightmost) command exits with a non-zero status
  
 # Defines the variables that are needed for any communication with ECF
 export ECF_PORT=3141    # The server port number
-export ECF_HOST=hercules-01-06    # The host name where the server is running
+export ECF_HOST=hercules-02-03    # The host name where the server is running
 export ECF_NAME=/schism_suite/preprocess/gen_elevth    # The name of this current task
-export ECF_PASS=Gpq84Axi    # A unique password, used for job validation & zombie detection
+export ECF_PASS=KoA1s4kL    # A unique password, used for job validation & zombie detection
 export ECF_TRYNO=1  # Current try number of the task
 export ECF_RID=$$             # record the process id. Also used for zombie detection
 # export NO_ECF=1             # uncomment to run as a standalone task on the command line
@@ -65,7 +65,7 @@ RNDAY=1.0
 BCTYPES='[[1,0,0,0]]'
 CONSTITUENTS="Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1"
 DATABASE="tpxo"
-PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+PREPROCESS="/home/mjisan/workflow/schism_suite"
 
 
 cd $PREPROCESS/scripts/Elev
