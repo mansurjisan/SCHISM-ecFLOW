@@ -1,19 +1,19 @@
 + set -o pipefail
 + export ECF_PORT=3141
 + ECF_PORT=3141
-+ export ECF_HOST=hercules-01-06
-+ ECF_HOST=hercules-01-06
++ export ECF_HOST=hercules-02-03
++ ECF_HOST=hercules-02-03
 + export ECF_NAME=/schism_suite/preprocess/gen_elevth
 + ECF_NAME=/schism_suite/preprocess/gen_elevth
-+ export ECF_PASS=Gpq84Axi
-+ ECF_PASS=Gpq84Axi
++ export ECF_PASS=KoA1s4kL
++ ECF_PASS=KoA1s4kL
 + export ECF_TRYNO=1
 + ECF_TRYNO=1
-+ export ECF_RID=703084
-+ ECF_RID=703084
++ export ECF_RID=3239058
++ ECF_RID=3239058
 + export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
 + PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-+ ecflow_client --init=703084
++ ecflow_client --init=3239058
 + trap ERROR 0
 + trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
 + CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
@@ -168,8 +168,8 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 + BCTYPES='[[1,0,0,0]]'
 + CONSTITUENTS=Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1
 + DATABASE=tpxo
-+ PREPROCESS=/home/mjisan/workflow/pyschism_suite
-+ cd /home/mjisan/workflow/pyschism_suite/scripts/Elev
++ PREPROCESS=/home/mjisan/workflow/schism_suite
++ cd /home/mjisan/workflow/schism_suite/scripts/Elev
 + ./predict_tide
  
  Lat/Lon/Time file:
@@ -184,4 +184,176 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
  Predict elevations (m)
  Constituents to include: m2  s2  n2  k2  k1  o1  p1  q1  mm  mf  m4  mn4 ms4 
  2n2 s1  
- Reading model...
+ Reading model... done
+ Results are in tpxo9.out
++ python convert_elev.py
+First data line: 36.1889  -75.9000     10.12.1994 17:00:00     0.418    10.076
+Fields: ['36.1889', '-75.9000', '10.12.1994', '17:00:00', '0.418', '10.076']
+Conversion complete. Output written to ../../workdir/elev.th
++ conda deactivate
++ local cmd=deactivate
++ case "$cmd" in
++ __conda_activate deactivate
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(pyschism_mjisan) '
+++ __conda_exe shell.posix deactivate
+++ /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda shell.posix deactivate
++ ask_conda='export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libglib_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/geotiff-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/gdal-deactivate.sh"
+unset CONDA_PREFIX_1
+PS1='\''(myecflow) '\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''myecflow'\''
+export CONDA_PROMPT_MODIFIER='\''(myecflow) '\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh"'
++ eval 'export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libglib_deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/geotiff-deactivate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/gdal-deactivate.sh"
+unset CONDA_PREFIX_1
+PS1='\''(myecflow) '\''
+export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''myecflow'\''
+export CONDA_PROMPT_MODIFIER='\''(myecflow) '\''
+export CONDA_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh"'
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh
++++ unset UDUNITS2_XML_PATH
++++ '[' -n '' ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh
++++ unset PROJ_DATA
++++ unset PROJ_NETWORK
++++ '[' -n '' ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh
++++ test -n ''
++++ unset XML_CATALOG_FILES
++++ unset xml_catalog_files_libxml2
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libglib_deactivate.sh
++++ export GSETTINGS_SCHEMA_DIR=
++++ GSETTINGS_SCHEMA_DIR=
++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
++++ '[' -z ']'
++++ unset GSETTINGS_SCHEMA_DIR
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/geotiff-deactivate.sh
++++ unset GEOTIFF_CSV
++++ '[' -n '' ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/gdal-deactivate.sh
++++ unset GDAL_DATA
++++ '[' -n '' ']'
++++ unset GDAL_DRIVER_PATH
++++ '[' -n '' ']'
++++ unset CPL_ZIP_ENCODING
+++ unset CONDA_PREFIX_1
+++ PS1='(myecflow) '
+++ export CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
+++ export CONDA_SHLVL=1
+++ CONDA_SHLVL=1
+++ export CONDA_DEFAULT_ENV=myecflow
+++ CONDA_DEFAULT_ENV=myecflow
+++ export 'CONDA_PROMPT_MODIFIER=(myecflow) '
+++ CONDA_PROMPT_MODIFIER='(myecflow) '
+++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ CONDA_PYTHON_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/share/glib-2.0/schemas
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
++++ for pre in ${rem}
++++ test '' = /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
++++ conda_catalog_files=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ '[' 0 -eq 0 ']'
++ ecflow_client --label=info 'convert_elev.py completed successfully'
++ wait
++ ecflow_client --complete
++ trap 0
++ exit 0
+24] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth : hercules-02-03:3141 : blocking : zombie detected, continue waiting
+[02:14:27 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:14:37 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:17 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:57 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
++ trap 0
++ exit 0
+24] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:16:06 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
++ trap 0
++ exit 0
+24] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:10:29 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:11:09 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:11:49 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:12:29 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:13:09 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:13:49 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:14:29 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:09 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:49 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
++ trap 0
++ exit 0
+24] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:11:52 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:12:32 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:13:12 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:13:52 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:14:32 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:12 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:52 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
++ trap 0
++ exit 0
+24] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:14:11 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:14:51 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:15:31 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
+[02:16:11 17.10.2024] ClientInvoker: chd:complete /schism_suite/preprocess/gen_elevth current host(hercules-02-03:3141) trying next host(hercules-02-03:3141)
++ trap 0
++ exit 0

@@ -1,0 +1,2 @@
+python job_card_generator.py --cluster hercules	#Standalone SCHISM in Hercules
+python job_card_generator.py --cluster hercules --wwm #Coupled SCHISM-WWM Module

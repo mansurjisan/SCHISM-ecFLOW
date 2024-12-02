@@ -1,19 +1,19 @@
 + set -o pipefail
 + export ECF_PORT=3141
 + ECF_PORT=3141
-+ export ECF_HOST=hercules-01-06
-+ ECF_HOST=hercules-01-06
++ export ECF_HOST=hercules-02-03
++ ECF_HOST=hercules-02-03
 + export ECF_NAME=/schism_suite/preprocess/gen_manning
 + ECF_NAME=/schism_suite/preprocess/gen_manning
-+ export ECF_PASS=U15bKE8r
-+ ECF_PASS=U15bKE8r
++ export ECF_PASS=ZXhN.RDy
++ ECF_PASS=ZXhN.RDy
 + export ECF_TRYNO=1
 + ECF_TRYNO=1
-+ export ECF_RID=703075
-+ ECF_RID=703075
++ export ECF_RID=3239049
++ ECF_RID=3239049
 + export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
 + PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-+ ecflow_client --init=703075
++ ecflow_client --init=3239049
 + trap ERROR 0
 + trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
 + CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
@@ -162,8 +162,8 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 + '[' -n '' ']'
 + '[' -n '' ']'
 + hash -r
-+ PREPROCESS=/home/mjisan/workflow/pyschism_suite
-+ cd /home/mjisan/workflow/pyschism_suite/scripts/Manning/
++ PREPROCESS=/home/mjisan/workflow/schism_suite
++ cd /home/mjisan/workflow/schism_suite/scripts/Manning/
 + python gen_gr3_input.py
 DEBUG:matplotlib:matplotlib data path: /home/mjisan/.local/lib/python3.9/site-packages/matplotlib/mpl-data
 DEBUG:matplotlib:CONFIGDIR=/home/mjisan/.config/matplotlib
@@ -174,7 +174,7 @@ DEBUG:matplotlib.font_manager:Using fontManager instance from /home/mjisan/.cach
 DEBUG:fiona._env:GDAL_DATA found in environment.
 DEBUG:fiona._env:PROJ_DATA found in environment.
 + sleep 5
-+ mv /home/mjisan/workflow/pyschism_suite/workdir/elev.gr3 /home/mjisan/workflow/pyschism_suite/workdir/elev.ic
++ mv /home/mjisan/workflow/schism_suite/workdir/elev.gr3 /home/mjisan/workflow/schism_suite/workdir/elev.ic
 + conda deactivate
 + local cmd=deactivate
 + case "$cmd" in

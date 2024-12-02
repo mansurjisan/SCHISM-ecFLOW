@@ -10,7 +10,7 @@ set -o pipefail # fail if last(rightmost) command exits with a non-zero status
 export ECF_PORT=3141    # The server port number
 export ECF_HOST=hercules-01-06    # The host name where the server is running
 export ECF_NAME=/schism_suite/postprocess/plot_water_elevation    # The name of this current task
-export ECF_PASS=C8Yjhjz8    # A unique password, used for job validation & zombie detection
+export ECF_PASS=wTDvO23n    # A unique password, used for job validation & zombie detection
 export ECF_TRYNO=2  # Current try number of the task
 export ECF_RID=$$             # record the process id. Also used for zombie detection
 # export NO_ECF=1             # uncomment to run as a standalone task on the command line
