@@ -1,0 +1,18 @@
+# Basic SCHISM workflow configuration
+suite:
+  ecf_home: '/home/mjisan/workflow'
+  ecf_include: '/home/mjisan/workflow'
+  schism_run_type: 'schism+wwm'
+  schism_cluster: 'hercules'
+
+environment:
+  conda:
+    path: "/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+    env_name: "pyschism_mjisan"
+
+namelist:
+  year: 1994
+  month: 10
+  day: 12
+  hour: 17
+  script_dir: "/home/mjisan/workflow/scripts/namelist/"

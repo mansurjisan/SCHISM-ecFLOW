@@ -1,0 +1,73 @@
+#!/bin/bash
+%include <head.h>
+
+# Get paths and configuration from config.yml
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+SCRIPT_DIR=$(yq -r '.bctides.script_dir' "${CONFIG_FILE}")
+HGRID_PATH=$(yq -r '.bctides.hgrid_path' "${CONFIG_FILE}")
+WORK_DIR=$(yq -r '.bctides.work_dir' "${CONFIG_FILE}")
+
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
+
+# Initialize conda
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
+
+# Get simulation parameters from config
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
+MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
+DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
+RNDAY=$(yq -r '.bctides.rnday' "${CONFIG_FILE}")
+BC_MODE=$(yq -r '.bctides.bc_mode' "${CONFIG_FILE}")
+BC_TYPE=$(yq -r '.bctides.bc_type' "${CONFIG_FILE}")
+CONSTITUENTS=$(yq -r '.bctides.constituents' "${CONFIG_FILE}")
+DATABASE=$(yq -r '.bctides.database' "${CONFIG_FILE}")
+CUTOFF_DEPTH=$(yq -r '.bctides.cutoff_depth' "${CONFIG_FILE}")
+EARTH_TIDAL=$(yq -r '.bctides.earth_tidal_potential' "${CONFIG_FILE}")
+
+# Create START_DATE from year, month, day
+START_DATE="${YEAR}-${MONTH}-${DAY}"
+
+# Create work directory if it doesn't exist
+mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
+
+# Change to script directory
+cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
+
+# Run Python script with error handling
+echo "Running bctides generation script..."
+python gen_bctides.py ${HGRID_PATH} ${START_DATE} ${RNDAY} \
+    --bc_mode ${BC_MODE} \
+    --bc_type ${BC_TYPE} \
+    --constituents ${CONSTITUENTS} \
+    --database ${DATABASE} \
+    --cutoff_depth ${CUTOFF_DEPTH} \
+    --earth_tidal_potential ${EARTH_TIDAL}
+
+handle_error $? "Failed to run bctides generation script"
+
+# Check if output files exist (adjust filename as needed)
+if [ ! -f "bctides.in" ]; then
+    handle_error 1 "Expected bctides.in file not found"
+fi
+
+# Move output files to work directory if they're not already there
+mv -f bctides.in ${WORK_DIR}/ || handle_error $? "Failed to move bctides.in to work directory"
+
+# Deactivate conda
+conda deactivate
+
+echo "Bctides generation completed successfully"
+ecflow_client --label=info "bctides generation complete"
+%include <tail.h>

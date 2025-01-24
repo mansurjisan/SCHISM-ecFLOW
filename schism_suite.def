@@ -1,40 +1,33 @@
 suite schism_suite
-  edit ECF_HOME '/home/mjisan/workflow'
-  edit ECF_INCLUDE '/home/mjisan/workflow'
-  edit SCHISM_RUN_TYPE 'schism+wwm'  # Can be 'standalone', 'schism+wwm', or 'schism+wwm+atm'
-  edit SCHISM_CLUSTER 'hercules'  # Can be 'hercules' or 'frontera'
 
-  family preprocess
+  edit ECF_HOME '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW'
+
+  edit ECF_INCLUDE '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW'
+
+  edit ECF_FILES '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/jobs'
+
+  edit SCHISM_RUN_TYPE "$(yq -r .suite.schism_run_type ${CONFIG_FILE})"
+
+  edit SCHISM_CLUSTER "$(yq -r .suite.schism_cluster ${CONFIG_FILE})"
+
+  edit CONFIG_FILE '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml'
+
+  edit PREPROCESS "$(yq -r .suite.preprocess_dir ${CONFIG_FILE})"
+
+
+family preprocess
+
     task gen_manning
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_manning.ecf'
+      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_manning.ecf'
+
     task gen_sflux_era5
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_sflux_era5.ecf'
-    task gen_bctides
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_bctides.ecf'
-    task gen_elevth
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_elevth.ecf'
-    task gen_namelist
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_namelist.ecf'
-  endfamily
+      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_sflux_era5.ecf'
 
-  family job_submission
-    trigger /schism_suite/preprocess == complete
-    task gen_rundir
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_rundir.ecf'
-    task gen_jobcard
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_jobcard.ecf'
-    task submit_job
-      trigger /schism_suite/job_submission/gen_rundir == complete and /schism_suite/job_submission/gen_jobcard == complete
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/submit_job.ecf'
-    task wait_for_simulation
-      trigger /schism_suite/job_submission/submit_job == complete
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/wait_for_simulation.ecf'
-  endfamily
+   task gen_bctides
+      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_bctides.ecf'
 
-  family postprocess
-    trigger /schism_suite/job_submission/wait_for_simulation == complete
-    task plot_water_elevation
-      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/plot_water_elevation.ecf'
-  endfamily
+   task gen_namelist
+      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_namelist.ecf'
 
+  endfamily
 endsuite

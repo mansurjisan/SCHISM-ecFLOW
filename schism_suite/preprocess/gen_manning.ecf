@@ -1,0 +1,59 @@
+#!/bin/bash
+%include <head.h>
+
+# Get paths from config
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+SCRIPT_DIR=$(yq -r '.manning.script_dir' "${CONFIG_FILE}")
+WORK_DIR=$(yq -r '.manning.work_dir' "${CONFIG_FILE}")
+
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
+
+# Initialize conda
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
+
+# Create work directory if it doesn't exist
+mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
+
+# Change to script directory
+cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
+
+# Run Python script
+echo "Running manning generation script..."
+python gen_gr3_input.py
+handle_error $? "Failed to run gen_gr3_input.py"
+
+# Wait for file to be created and check existence
+ELEV_FILE="${WORK_DIR}/elev.gr3"
+for i in {1..10}; do
+    if [ -f "$ELEV_FILE" ]; then
+        break
+    fi
+    sleep 1
+done
+
+# Check if source file exists
+if [ ! -f "$ELEV_FILE" ]; then
+    handle_error 1 "elev.gr3 file not found after script execution"
+fi
+
+# Move file with error checking
+mv -v "$ELEV_FILE" "${WORK_DIR}/elev.ic"
+handle_error $? "Failed to rename elev.gr3 to elev.ic"
+
+# Deactivate conda
+conda deactivate
+
+ecflow_client --label=info "Manning generation complete successfully"
+%include <tail.h>

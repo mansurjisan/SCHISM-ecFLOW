@@ -1,42 +1,73 @@
 #!/bin/bash
 %include <head.h>
-#%include <tail.h>
 
-# Set the path to conda.sh
-CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+# Get paths and configuration from config.yml
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+SCRIPT_DIR=$(yq -r '.bctides.script_dir' "${CONFIG_FILE}")
+HGRID_PATH=$(yq -r '.bctides.hgrid_path' "${CONFIG_FILE}")
+WORK_DIR=$(yq -r '.bctides.work_dir' "${CONFIG_FILE}")
 
-# Check if conda.sh exists
-if [ ! -f "$CONDA_SH" ]; then
-    echo "Error: Could not find conda.sh at $CONDA_SH"
-    exit 1
-fi
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
 
 # Initialize conda
-source "$CONDA_SH"
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
 
-# Activate the PySCHISM environment
-conda activate pyschism_mjisan
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
 
-# Set variables
-HGRID_PATH="../fix/hgrid.ll"
-START_DATE="1994-10-12"
-RNDAY=1.0
-BCTYPES='[[1,0,0,0]]'
-CONSTITUENTS="Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1"
-DATABASE="tpxo"
-SCRIPT_PATH="../scripts/Bnd/"
-PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+# Get simulation parameters from config
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
+MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
+DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
+RNDAY=$(yq -r '.bctides.rnday' "${CONFIG_FILE}")
+BC_MODE=$(yq -r '.bctides.bc_mode' "${CONFIG_FILE}")
+BC_TYPE=$(yq -r '.bctides.bc_type' "${CONFIG_FILE}")
+CONSTITUENTS=$(yq -r '.bctides.constituents' "${CONFIG_FILE}")
+DATABASE=$(yq -r '.bctides.database' "${CONFIG_FILE}")
+CUTOFF_DEPTH=$(yq -r '.bctides.cutoff_depth' "${CONFIG_FILE}")
+EARTH_TIDAL=$(yq -r '.bctides.earth_tidal_potential' "${CONFIG_FILE}")
 
-# Run the gen_bctides.py script
-python $PREPROCESS/gen_bctides.py $HGRID_PATH $START_DATE $RNDAY "$BCTYPES" $CONSTITUENTS $DATABASE \
-    --earth_tidal_potential Y \
-    --cutoff_depth 0
+# Create START_DATE from year, month, day
+START_DATE="${YEAR}-${MONTH}-${DAY}"
 
+# Create work directory if it doesn't exist
+mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
 
+# Change to script directory
+cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
+
+# Run Python script with error handling
+echo "Running bctides generation script..."
+python gen_bctides.py ${HGRID_PATH} ${START_DATE} ${RNDAY} \
+    --bc_mode ${BC_MODE} \
+    --bc_type ${BC_TYPE} \
+    --constituents ${CONSTITUENTS} \
+    --database ${DATABASE} \
+    --cutoff_depth ${CUTOFF_DEPTH} \
+    --earth_tidal_potential ${EARTH_TIDAL}
+
+handle_error $? "Failed to run bctides generation script"
+
+# Check if output files exist (adjust filename as needed)
+if [ ! -f "bctides.in" ]; then
+    handle_error 1 "Expected bctides.in file not found"
+fi
+
+# Move output files to work directory if they're not already there
+mv -f bctides.in ${WORK_DIR}/ || handle_error $? "Failed to move bctides.in to work directory"
+
+# Deactivate conda
 conda deactivate
 
-# Check if the script ran successfully
+echo "Bctides generation completed successfully"
 ecflow_client --label=info "bctides generation complete"
-
-
 %include <tail.h>

@@ -1,0 +1,61 @@
+#!/bin/bash
+%include <head.h>
+
+# Get paths and configuration from config.yml
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+SCRIPT_DIR=$(yq -r '.namelist.script_dir' "${CONFIG_FILE}")
+WORK_DIR=$(yq -r '.namelist.work_dir' "${CONFIG_FILE}")
+
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
+
+# Initialize conda
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
+
+# Get simulation parameters from config
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
+MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
+DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
+HOUR=$(yq -r '.namelist.hour' "${CONFIG_FILE}")
+RNDAY=$(yq -r '.namelist.rnday' "${CONFIG_FILE}")
+
+# Create work directory if it doesn't exist
+mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
+
+# Change to script directory
+cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
+
+# Select script based on run type
+if [ %SCHISM_RUN_TYPE% == "schism+wwm+atm" ]; then
+    SCRIPT_NAME="gen_namelist_sch_wm_sf.py"
+else
+    SCRIPT_NAME="gen_namelist.py"
+fi
+
+# Run Python script with error handling
+echo "Running namelist generation script..."
+python $SCRIPT_NAME --year $YEAR --month $MONTH --day $DAY --hour $HOUR --rnday $RNDAY --workdir $WORK_DIR
+handle_error $? "Failed to run namelist generation script"
+
+# Check if param.nml was created in the work directory
+if [ ! -f "${WORK_DIR}/param.nml" ]; then
+    handle_error 1 "param.nml file not created in ${WORK_DIR}"
+fi
+
+# Deactivate conda
+conda deactivate
+
+echo "Namelist generation completed successfully"
+ecflow_client --label=info "namelist generation complete"
+%include <tail.h>

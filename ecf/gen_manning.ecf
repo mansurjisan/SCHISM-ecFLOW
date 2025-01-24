@@ -1,36 +1,59 @@
 #!/bin/bash
 %include <head.h>
 
-# Set the path to conda.sh
-CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+# Get paths from config
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+SCRIPT_DIR=$(yq -r '.manning.script_dir' "${CONFIG_FILE}")
+WORK_DIR=$(yq -r '.manning.work_dir' "${CONFIG_FILE}")
 
-# Check if conda.sh exists
-if [ ! -f "$CONDA_SH" ]; then
-    echo "Error: Could not find conda.sh at $CONDA_SH"
-    exit 1
-fi
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
 
 # Initialize conda
-source "$CONDA_SH"
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
 
-# Activate the PySCHISM environment
-conda activate pyschism_mjisan
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
 
-PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+# Create work directory if it doesn't exist
+mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
 
-# Change to the directory containing script
-cd $PREPROCESS/scripts/Manning/
+# Change to script directory
+cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
 
+# Run Python script
+echo "Running manning generation script..."
 python gen_gr3_input.py
+handle_error $? "Failed to run gen_gr3_input.py"
 
-sleep 5
+# Wait for file to be created and check existence
+ELEV_FILE="${WORK_DIR}/elev.gr3"
+for i in {1..10}; do
+    if [ -f "$ELEV_FILE" ]; then
+        break
+    fi
+    sleep 1
+done
 
-mv $PREPROCESS/workdir/elev.gr3 $PREPROCESS/workdir/elev.ic
+# Check if source file exists
+if [ ! -f "$ELEV_FILE" ]; then
+    handle_error 1 "elev.gr3 file not found after script execution"
+fi
 
-# Deactivate the PySCHISM environment if needed
+# Move file with error checking
+mv -v "$ELEV_FILE" "${WORK_DIR}/elev.ic"
+handle_error $? "Failed to rename elev.gr3 to elev.ic"
+
+# Deactivate conda
 conda deactivate
 
-# Update ecFlow with task completion
-ecflow_client --label=info "roughness generation complete"
-
+ecflow_client --label=info "Manning generation complete successfully"
 %include <tail.h>

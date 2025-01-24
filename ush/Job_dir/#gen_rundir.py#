@@ -1,0 +1,38 @@
+import os
+import shutil
+import argparse
+
+def setup_directories(source_dir, dest_dir):
+    # Ensure the destination directory exists
+    os.makedirs(dest_dir, exist_ok=True)
+
+    # Create the outputs directory inside workdir
+    outputs_dir = os.path.join(dest_dir, 'outputs')
+    os.makedirs(outputs_dir, exist_ok=True)
+
+    # Copy all files from source to destination
+    for item in os.listdir(source_dir):
+        s = os.path.join(source_dir, item)
+        d = os.path.join(dest_dir, item)
+        if os.path.isfile(s):
+            shutil.copy2(s, d)
+        elif os.path.isdir(s):
+            shutil.copytree(s, d, dirs_exist_ok=True)
+
+    print(f"Files copied from {source_dir} to {dest_dir}")
+    print(f"'outputs' directory created in {outputs_dir}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Copy files and setup directories for pyschism_suite")
+    parser.add_argument("--source", default="/home/mjisan/workflow/pyschism_suite/fix",
+                        help="Source directory (default: /home/mjisan/workflow/pyschism_suite/fix)")
+    parser.add_argument("--dest", default="/home/mjisan/workflow/pyschism_suite/workdir",
+                        help="Destination directory (default: /home/mjisan/workflow/pyschism_suite/workdir)")
+
+    args = parser.parse_args()
+
+    setup_directories(args.source, args.dest)
+
+if __name__ == "__main__":
+    main()
+    

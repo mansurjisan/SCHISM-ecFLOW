@@ -1,23 +1,33 @@
 + set -o pipefail
 + export ECF_PORT=3141
 + ECF_PORT=3141
-+ export ECF_HOST=hercules-01-06
-+ ECF_HOST=hercules-01-06
++ export ECF_HOST=hercules-07-19
++ ECF_HOST=hercules-07-19
 + export ECF_NAME=/schism_suite/preprocess/gen_sflux_era5
 + ECF_NAME=/schism_suite/preprocess/gen_sflux_era5
-+ export ECF_PASS=6Av.GkeO
-+ ECF_PASS=6Av.GkeO
++ export ECF_PASS=Up77RXwN
++ ECF_PASS=Up77RXwN
 + export ECF_TRYNO=1
 + ECF_TRYNO=1
-+ export ECF_RID=703076
-+ ECF_RID=703076
-+ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-+ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-+ ecflow_client --init=703076
++ export ECF_RID=1462991
++ ECF_RID=1462991
++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
++ export CONFIG_FILE=/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ CONFIG_FILE=/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ ecflow_client --init=1462991
 + trap ERROR 0
 + trap '{ echo "Killed by a signal"; ERROR ; }' 1 2 3 4 5 6 7 8 10 12 13 15
-+ CONDA_SH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
-+ '[' '!' -f /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh ']'
+++ yq -r .environment.conda.path /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ CONDA_PATH=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
+++ yq -r .environment.conda.env_name /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ CONDA_ENV=pyschism_mjisan
+++ yq -r .sflux.script_dir /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ SCRIPT_DIR=/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Sflux
+++ yq -r .sflux.work_dir /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ WORK_DIR=/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir
+++ yq -r .sflux.hgrid_path /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ HGRID_PATH=/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/fix/hgrid.gr3
 + source /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh
 ++ export CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
 ++ CONDA_EXE=/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda
@@ -40,7 +50,7 @@
 + ask_conda='. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
 PS1='\''(pyschism_mjisan) '\''
-export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
 export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
 export CONDA_SHLVL='\''2'\''
 export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
@@ -52,14 +62,16 @@ export _CE_CONDA='\'''\''
 export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libarrow_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/openmpi_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
 + eval '. "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libglib_deactivate.sh"
 PS1='\''(pyschism_mjisan) '\''
-export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
+export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
 export CONDA_PREFIX='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan'\''
 export CONDA_SHLVL='\''2'\''
 export CONDA_DEFAULT_ENV='\''pyschism_mjisan'\''
@@ -71,8 +83,10 @@ export _CE_CONDA='\'''\''
 export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/gdal-activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/geotiff-activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libarrow_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libxml2_activate.sh"
+. "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/openmpi_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/udunits2-activate.sh"'
 ++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/deactivate.d/libxml2_deactivate.sh
@@ -86,8 +100,8 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 +++ '[' -z ']'
 +++ unset GSETTINGS_SCHEMA_DIR
 ++ PS1='(pyschism_mjisan) '
-++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
 ++ export CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
 ++ CONDA_PREFIX=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan
 ++ export CONDA_SHLVL=2
@@ -121,6 +135,54 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 +++ '[' -n '' ']'
 +++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/epsg_csv ']'
 +++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/Library/share/epsg_csv ']'
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libarrow_activate.sh
++++ _la_log 'Beginning libarrow activation.'
++++ '[' '' = 1 ']'
++++ _la_gdb_prefix=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load
++++ '[' '!' -w /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load ']'
++++ _la_placeholder=replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX
++++ _la_symlink_dir=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load//work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib
++++ _la_orig_install_dir=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib
++++ _la_log '          _la_gdb_prefix: /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load'
++++ '[' '' = 1 ']'
++++ _la_log '         _la_placeholder: replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX'
++++ '[' '' = 1 ']'
++++ _la_log '         _la_symlink_dir: /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load//work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib'
++++ '[' '' = 1 ']'
++++ _la_log '    _la_orig_install_dir: /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib'
++++ '[' '' = 1 ']'
++++ _la_log '  content of that folder:'
++++ '[' '' = 1 ']'
+++++ ls -al /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib
+++++ sed 's/^/      /'
++++ _la_log '      total 12
+      drwxr-s--- 2 mjisan noaa-hpc 4096 Nov  7 23:16 .
+      drwxr-s--- 3 mjisan noaa-hpc 4096 Nov  7 23:16 ..
+      -rw-r----- 1 mjisan noaa-hpc 1001 Nov  7 23:16 libarrow.so.1700.0.0-gdb.py'
++++ '[' '' = 1 ']'
++++ for _la_target in "$_la_orig_install_dir/"*.py
++++ '[' '!' -e /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1700.0.0-gdb.py ']'
+++++ basename /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1700.0.0-gdb.py
++++ _la_symlink=/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load//work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/libarrow.so.1700.0.0-gdb.py
++++ _la_log '   _la_target: /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1700.0.0-gdb.py'
++++ '[' '' = 1 ']'
++++ _la_log '  _la_symlink: /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load//work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/libarrow.so.1700.0.0-gdb.py'
++++ '[' '' = 1 ']'
++++ '[' -L /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load//work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/libarrow.so.1700.0.0-gdb.py ']'
+++++ readlink /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load//work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/lib/libarrow.so.1700.0.0-gdb.py
++++ '[' /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1700.0.0-gdb.py = /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1700.0.0-gdb.py ']'
++++ _la_log 'symlink $_la_symlink already exists and points to $_la_target, skipping.'
++++ '[' '' = 1 ']'
++++ continue
++++ _la_log 'Libarrow activation complete.'
++++ '[' '' = 1 ']'
++++ unset _la_gdb_prefix
++++ unset _la_log
++++ unset _la_orig_install_dir
++++ unset _la_placeholder
++++ unset _la_symlink
++++ unset _la_symlink_dir
++++ unset _la_target
 ++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/libglib_activate.sh
 +++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
 +++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
@@ -145,6 +207,8 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 +++ export 'XML_CATALOG_FILES=file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
 +++ XML_CATALOG_FILES='file:///work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/xml/catalog file:///etc/xml/catalog'
 +++ unset conda_catalog_files ifs_libxml2 rem
+++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/openmpi_activate.sh
++++ '[' '' = 1 ']'
 ++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/activate.d/proj4-activate.sh
 +++ '[' -n '' ']'
 +++ '[' -d /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/share/proj ']'
@@ -162,11 +226,19 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 + '[' -n '' ']'
 + '[' -n '' ']'
 + hash -r
-+ START_DATE=2023-08-15
+++ yq -r .namelist.year /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ YEAR=1994
+++ yq -r .namelist.month /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ MONTH=10
+++ yq -r .namelist.day /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
++ DAY=12
+++ yq -r .sflux.rnday /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml
 + RNDAY=3
-+ PREPROCESS=/home/mjisan/workflow/pyschism_suite
-+ cd /home/mjisan/workflow/pyschism_suite/scripts/Sflux
-+ python gen_sflux_era5_v2.py
++ mkdir -p /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir
++ cd /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Sflux
++ echo 'Running sflux generation script...'
+Running sflux generation script...
++ python gen_sflux_era51.py --year 1994 --month 10 --day 12 --rnday 3 --hgrid /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/fix/hgrid.gr3 --outdir /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir
 DEBUG:matplotlib:matplotlib data path: /home/mjisan/.local/lib/python3.9/site-packages/matplotlib/mpl-data
 DEBUG:matplotlib:CONFIGDIR=/home/mjisan/.config/matplotlib
 DEBUG:matplotlib:interactive is False
@@ -175,7 +247,23 @@ DEBUG:matplotlib:CACHEDIR=/home/mjisan/.cache/matplotlib
 DEBUG:matplotlib.font_manager:Using fontManager instance from /home/mjisan/.cache/matplotlib/fontlist-v390.json
 DEBUG:fiona._env:GDAL_DATA found in environment.
 DEBUG:fiona._env:PROJ_DATA found in environment.
-It took 0.009154927730560303 minutes to generate 3 days
++ handle_error 0 'Failed to run sflux generation script'
++ local exit_code=0
++ local 'error_msg=Failed to run sflux generation script'
++ '[' 0 -ne 0 ']'
+++ seq 1 3
++ for iday in $(seq 1 $RNDAY)
+++ printf %04d 1
++ padded_day=0001
++ '[' '!' -f /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir/sflux_air_1.0001.nc ']'
++ for iday in $(seq 1 $RNDAY)
+++ printf %04d 2
++ padded_day=0002
++ '[' '!' -f /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir/sflux_air_1.0002.nc ']'
++ for iday in $(seq 1 $RNDAY)
+++ printf %04d 3
++ padded_day=0003
++ '[' '!' -f /work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir/sflux_air_1.0003.nc ']'
 + conda deactivate
 + local cmd=deactivate
 + case "$cmd" in
@@ -185,7 +273,7 @@ It took 0.009154927730560303 minutes to generate 3 days
 ++ PS1='(pyschism_mjisan) '
 ++ __conda_exe shell.posix deactivate
 ++ /apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/conda shell.posix deactivate
-+ ask_conda='export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
++ ask_conda='export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh"
@@ -204,7 +292,7 @@ export _CE_CONDA='\'''\''
 export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh"'
-+ eval 'export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
++ eval 'export PATH='\''/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin'\''
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/proj4-deactivate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/libxml2_deactivate.sh"
@@ -223,8 +311,8 @@ export _CE_CONDA='\'''\''
 export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/bin/python'\''
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libglib_activate.sh"
 . "/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/etc/conda/activate.d/libxml2_activate.sh"'
-++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
-++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
+++ PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/condabin:/apps/spack-managed/oneapi-2022.2.1/ncview-2.1.8-4la2cnokt54wzpwrwipb7567g3xr4ns6/bin:/apps/spack-managed/oneapi-2022.2.1/udunits-2.2.28-ars6paafjw4uzvf32yyurfoeokipytyy/bin:/apps/spack-managed/oneapi-2022.2.1/netcdf-c-4.9.2-4fk7z3rkc3oqfw7t4j4j32dcalpr64op/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/libfabric/bin:/apps/spack-managed/oneapi-2022.2.1/intel-oneapi-mpi-2021.7.1-zfmfvyc4a4wkhgxe2f34irg663e6dcoh/mpi/2021.7.1/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/lib/oclfpga/bin:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin/intel64:/apps/spack-managed/gcc-11.3.1/intel-oneapi-compilers-2022.2.1-z2sjni66fcyqcsamnoccgb7c77mn37qj/compiler/2022.2.1/linux/bin:/usr/sbin:/usr/bin:/apps/sbin:/apps/bin:/opt/slurm/bin:/work/noaa/nosofs/mjisan/xxdiff/bin
 ++ . /work/noaa/nosofs/mjisan/conda/.conda/envs/pyschism_mjisan/etc/conda/deactivate.d/udunits2-deactivate.sh
 +++ unset UDUNITS2_XML_PATH
 +++ '[' -n '' ']'
@@ -297,6 +385,8 @@ export CONDA_PYTHON_EXE='\''/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avn
 + '[' -n '' ']'
 + '[' -n '' ']'
 + hash -r
++ echo 'Sflux generation completed successfully'
+Sflux generation completed successfully
 + ecflow_client --label=info 'ERA5 sflux generation complete'
 + wait
 + ecflow_client --complete

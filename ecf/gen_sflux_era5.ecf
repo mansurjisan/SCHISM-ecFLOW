@@ -1,34 +1,63 @@
 #!/bin/bash
 %include <head.h>
 
-# Set the path to conda.sh
-CONDA_SH="/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+# Get paths and configuration from config.yml
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+SCRIPT_DIR=$(yq -r '.sflux.script_dir' "${CONFIG_FILE}")
+WORK_DIR=$(yq -r '.sflux.work_dir' "${CONFIG_FILE}")
+HGRID_PATH=$(yq -r '.sflux.hgrid_path' "${CONFIG_FILE}")
 
-# Check if conda.sh exists
-if [ ! -f "$CONDA_SH" ]; then
-    echo "Error: Could not find conda.sh at $CONDA_SH"
-    exit 1
-fi
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
 
 # Initialize conda
-source "$CONDA_SH"
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
 
-# Activate the PySCHISM environment
-conda activate pyschism_mjisan
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
 
-# Set variables
-START_DATE="2023-08-15"
-RNDAY=3
-PREPROCESS="/home/mjisan/workflow/pyschism_suite"
+# Get simulation parameters from config
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
+MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
+DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
+RNDAY=$(yq -r '.sflux.rnday' "${CONFIG_FILE}")
 
-cd $PREPROCESS/scripts/Sflux
+# Create work directory if it doesn't exist
+mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
 
-# Run the gen_sflux_era5.py script
-python gen_sflux_era5_v2.py
+# Change to script directory
+cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
 
+# Run Python script with error handling
+echo "Running sflux generation script..."
+python gen_sflux_era51.py \
+  --year $YEAR \
+  --month $MONTH \
+  --day $DAY \
+  --rnday $RNDAY \
+  --hgrid $HGRID_PATH \
+  --outdir $WORK_DIR
+handle_error $? "Failed to run sflux generation script"
+
+# Check if output files exist (assuming sflux files are created)
+for iday in $(seq 1 $RNDAY); do
+    padded_day=$(printf "%%04d" $iday)  # Note the double %% for escaping
+    if [ ! -f "${WORK_DIR}/sflux_air_1.${padded_day}.nc" ]; then
+        handle_error 1 "Expected sflux file not found: sflux_air_1.${padded_day}.nc"
+    fi
+done
+
+# Deactivate conda
 conda deactivate
 
-# Update ecFlow (this will use the ECF_NAME variable set in the head.h include)
+echo "Sflux generation completed successfully"
 ecflow_client --label=info "ERA5 sflux generation complete"
-
 %include <tail.h>
