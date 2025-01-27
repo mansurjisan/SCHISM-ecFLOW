@@ -1,4 +1,4 @@
-# YAML-Driven SCHISM Workflow with ecFlow
+# YAML-Driven ecFlow based Workflow for SCHISM Modeling System
 
 A modern, configuration-driven ecFlow based workflow system for SCHISM (Semi-implicit Cross-scale Hydroscience Integrated System Model) model. This implementation emphasizes a centralized YAML configuration approach, making it easy to modify and maintain complex SCHISM workflows.
 
