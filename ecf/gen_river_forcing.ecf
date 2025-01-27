@@ -1,5 +1,6 @@
 #!/bin/bash
 %include <head.h>
+
 # Function for error handling
 handle_error() {
     local exit_code=$1
@@ -9,10 +10,12 @@ handle_error() {
         exit $exit_code
     fi
 }
+
 # Initialize conda
 CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
 source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
 conda activate $(yq -r '.environment.conda.env_name' "${CONFIG_FILE}") || handle_error $? "Failed to activate conda environment"
+
 # --------------------------------------------------
 # Read Parameters from Config.yml (With Error Checks)
 # --------------------------------------------------
@@ -38,15 +41,15 @@ YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}" || handle_error $? "Failed to rea
 export FIXstofs3d="${FIX_DIR}"
 export DATA_prep_nwm="${RIVER_WORK_DIR}"
 export COMINnwm="${NWM_DIR}"
-#export PYSTOFS3D_DIR="${PYSTOFS3D_DIR}"
 export PDYHH_NCAST_BEGIN="${YEAR}${MONTH}${DAY}${HOUR}"  # YYYYMMDDHH
 export cycle="${HOUR}"
-#export PYstofs3d="${PYstofs3d}"
 
 # --------------------------------------------------
 # Directory Setup
 # --------------------------------------------------
+
 mkdir -p "${RIVER_WORK_DIR}" || handle_error $? "Failed to create work directory"
+
 # --------------------------------------------------
 # Execute River Forcing Script
 # --------------------------------------------------
@@ -55,9 +58,11 @@ echo "PDYHH_NCAST_BEGIN: ${PDYHH_NCAST_BEGIN}"
 echo "cycle: ${cycle}"
 cd "${RIVER_SCRIPT_DIR}" || handle_error $? "Failed to enter script directory"
 bash ./run_river_forcing.sh || handle_error $? "River forcing script failed"
+
 # --------------------------------------------------
 # Verify Outputs
 # --------------------------------------------------
+
 cd "${RIVER_WORK_DIR}" || handle_error $? "Failed to enter work directory"
 required_files=("vsource.th" "vsink.th" "msource.th")
 for file in "${required_files[@]}"; do
@@ -65,6 +70,7 @@ for file in "${required_files[@]}"; do
         handle_error 1 "Missing output file: ${file}"
     fi
 done
+
 # --------------------------------------------------
 # Final Reporting
 # --------------------------------------------------
