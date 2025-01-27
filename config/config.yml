@@ -1,10 +1,10 @@
-# Basic SCHISM workflow configuration
+# STOFS-3D workflow configuration
 suite:
   ecf_home: /home/mjisan/workflow
   ecf_include: /home/mjisan/workflow
   stofs_run_type: 3d-atl
-  schism_cluster: hercules
-  preprocess_dir: '/home/mjisan/workflow/schism_suite2'
+  stofs_cluster: hercules
+  preprocess_dir: '/home/mjisan/workflow/stofs_suite'
 
 environment:
   conda:
@@ -13,20 +13,20 @@ environment:
 
 namelist:
   year: 2025
-  month: 10
+  month: 01
   day: 25
   hour: 6
   rnday: 3
-  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/namelist/"
-  work_dir: "/home/mjisan/workflow/schism_suite2/workdir"
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/namelist/"
+  work_dir: "/home/mjisan/workflow/stofs_suite/workdir"
   script_name: "stofs_3d_atl_param.py"
 
 
 bctides:
   script_name: "gen_bctides_stofs.py"
-  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/Bnd"
-  hgrid_path: "/home/mjisan/workflow/schism_suite2/fix/hgrid.ll"
-  work_dir: "/home/mjisan/workflow/schism_suite2/workdir"
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/Bnd"
+  hgrid_path: "/home/mjisan/workflow/stofs_suite/fix/hgrid.ll"
+  work_dir: "/home/mjisan/workflow/stofs_suite/workdir"
   rnday: 20
   bc_mode: "tidal"
   bc_type: 3
@@ -37,10 +37,10 @@ bctides:
 
 river_forcing:
   script_name: "run_river_forcing.sh"  
-  fix_dir: "/home/mjisan/workflow/schism_suite2/fix"
-  work_dir: "/home/mjisan/workflow/schism_suite2/workdir/river"
+  fix_dir: "/home/mjisan/workflow/stofs_suite/fix"
+  work_dir: "/home/mjisan/workflow/stofs_suite/workdir/river"
   nwm_dir: "/work/noaa/nosofs/mjisan/STOFS/NWM"
-  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/river_forcing"
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/river_forcing"
   pyschism_dir: "/work/noaa/nosofs/mjisan/WCOSS_BACKUP_RMV_AFTER_DEV_SWITCH/IT-stofs.v2.1.0/ush/stofs_3d_atl/pysh"
 
   
@@ -48,10 +48,6 @@ sflux:
   rnday: 3
   data_file: 'data_stream-oper.nc'
   interval: 1
-  hgrid_path: '/home/mjisan/workflow/schism_suite2/fix/hgrid.gr3'
-  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/Sflux"
-  work_dir: '/home/mjisan/workflow/schism_suite2/workdir'
-
-manning:
-  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/Manning"
-  work_dir: "/home/mjisan/workflow/schism_suite2/workdir"
+  hgrid_path: '/home/mjisan/workflow/stofs_suite/fix/hgrid.gr3'
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/Sflux"
+  work_dir: '/home/mjisan/workflow/stofs_suite/workdir'
