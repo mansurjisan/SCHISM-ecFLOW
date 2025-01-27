@@ -2,7 +2,7 @@ suite stofs_suite
   edit ECF_HOME '/home/mjisan/workflow'
   edit ECF_INCLUDE '/home/mjisan/workflow'
   edit STOFS_RUN_TYPE "$(yq -r .suite.stofs_run_type ${CONFIG_FILE})"
-  edit SCHISM_CLUSTER "$(yq -r .suite.schism_cluster ${CONFIG_FILE})"
+  edit STOFS_CLUSTER "$(yq -r .suite.stofs_cluster ${CONFIG_FILE})"
   edit CONFIG_FILE '/home/mjisan/workflow/config.yml'
   edit PREPROCESS "$(yq -r .suite.preprocess_dir ${CONFIG_FILE})"
 
