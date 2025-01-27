@@ -25,15 +25,8 @@ namelist:
 bctides:
   script_name: "gen_bctides_stofs.py"
   script_dir: "/home/mjisan/workflow/stofs_suite/scripts/Bnd"
-  hgrid_path: "/home/mjisan/workflow/stofs_suite/fix/hgrid.ll"
   work_dir: "/home/mjisan/workflow/stofs_suite/workdir"
   rnday: 20
-  bc_mode: "tidal"
-  bc_type: 3
-  constituents: "Q1,O1,P1,K1,N2,M2,S2,K2,Mm,Mf,M4,MN4,MS4,2N2,S1"
-  database: "tpxo"
-  cutoff_depth: 40
-  earth_tidal_potential: "Y"
 
 river_forcing:
   script_name: "run_river_forcing.sh"  
@@ -43,11 +36,4 @@ river_forcing:
   script_dir: "/home/mjisan/workflow/stofs_suite/scripts/river_forcing"
   pyschism_dir: "/work/noaa/nosofs/mjisan/WCOSS_BACKUP_RMV_AFTER_DEV_SWITCH/IT-stofs.v2.1.0/ush/stofs_3d_atl/pysh"
 
-  
-sflux:
-  rnday: 3
-  data_file: 'data_stream-oper.nc'
-  interval: 1
-  hgrid_path: '/home/mjisan/workflow/stofs_suite/fix/hgrid.gr3'
-  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/Sflux"
-  work_dir: '/home/mjisan/workflow/stofs_suite/workdir'
+
