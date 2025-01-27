@@ -39,13 +39,6 @@ mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
 # Change to script directory
 cd ${SCRIPT_DIR} || handle_error $? "Failed to change to script directory"
 
-# Select script based on run type
-#if [ %STOFS_RUN_TYPE% == "3d-atl" ]; then
-#    SCRIPT_NAME="stofs_3d_atl_param.py"
-#else
-#    SCRIPT_NAME="stofs_2d_glo_param.py"
-#fi
-
 # Run Python script with error handling
 echo "Running namelist generation script..."
 python $SCRIPT_NAME --year $YEAR --month $MONTH --day $DAY --hour $HOUR --rnday $RNDAY --workdir $WORK_DIR
