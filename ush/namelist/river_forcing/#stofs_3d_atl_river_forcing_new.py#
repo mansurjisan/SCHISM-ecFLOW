@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+import os
+import glob
+import subprocess
+import argparse
+from datetime import datetime, timedelta
+import numpy as np
+import shutil
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate STOFS 3D Atlantic river forcing files')
+    parser.add_argument('--start_date', required=True, help='Start date (YYYY-MM-DD HH:MM:SS)')
+    parser.add_argument('--nwm_dir', required=True, help='Path to NWM input files')
+    parser.add_argument('--workdir', required=True, help='Working directory')
+    parser.add_argument('--fix_dir', required=True, help='Path to FIX files')
+    args = parser.parse_args()
+
+    # Setup directories
+    os.makedirs(args.workdir, exist_ok=True)
+    os.chdir(args.workdir)
+    print(f"Working in {os.getcwd()}")
+
+    # Copy static files
+    static_files = [
+        'relocate_map.txt', 'source_scale.txt',
+        'sources_conus.json', 'sinks_conus.json',
+        'source_sink.in.before_relocate',
+        'relocate_source_feeder_lean.py'  # NEW LINE
+
+    ]
+    for f in static_files:
+        shutil.copy(f"{args.fix_dir}/stofs_3d_atl_river_{f}", f"./{f}")
+
+    # Get date components
+    start_dt = datetime.strptime(args.start_date, "%Y-%m-%d %H:%M:%S")
+    yyyymmdd_today = start_dt.strftime("%Y%m%d")
+    prev_day = start_dt - timedelta(days=1)
+    yyyymmdd_prev = prev_day.strftime("%Y%m%d")
+
+    # Find NWM files (replicate shell script logic)
+    nwm_files = []
+    patterns = [
+        f"{args.nwm_dir}/nwm.{yyyymmdd_prev}/medium_range_mem1/nwm.t06z.medium_range.channel_rt_1.f006.conus.nc",
+        f"{args.nwm_dir}/nwm.{yyyymmdd_prev}/medium_range_mem1/nwm.t12z.medium_range.channel_rt_1.f00[1-6].conus.nc",
+        f"{args.nwm_dir}/nwm.{yyyymmdd_today}/medium_range_mem1/nwm.t00z.medium_range.channel_rt_1.f00[1-6].conus.nc",
+        f"{args.nwm_dir}/nwm.{yyyymmdd_today}/medium_range_mem1/nwm.t06z.medium_range.channel_rt_1.f0[0-9][0-9].conus.nc"
+    ]
+
+    for pattern in patterns:
+        nwm_files.extend(sorted(glob.glob(pattern)))
+
+    # Create symlinks
+    for idx, nwm_file in enumerate(nwm_files[:121]):  # Limit to 121 files
+        link_name = f"nwm_{idx+1:03d}.conus.nc"
+        if os.path.exists(link_name):
+            os.remove(link_name)
+        os.symlink(nwm_file, link_name)
+
+    # Run gen_sourcesink.py
+    subprocess.run([
+        'python', f"{os.path.dirname(__file__)}/gen_sourcesink.py",
+        args.start_date
+    ], check=True)
+
+    # QC and finalize outputs
+    qc_th_file('vsource.th', min_lines=97, target_lines=121)
+    for th_file in ['msource.th', 'vsink.th']:
+        shutil.copy(f"{args.fix_dir}/stofs_3d_atl_river_{th_file}", th_file)
+
+def qc_th_file(filename, min_lines, target_lines):
+    """Replicate shell script QC operations"""
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"{filename} not found")
+
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+
+    # Append lines if needed
+    if len(lines) < target_lines:
+        last_line = lines[-1].split()
+        last_time = float(last_line[0])
+        last_values = last_line[1:]
+        
+        for _ in range(target_lines - len(lines)):
+            last_time += 3600  # Add 1 hour
+            new_line = f"{last_time} {' '.join(last_values)}\n"
+            lines.append(new_line)
+
+    # Adjust timestamps
+    lines[0] = '0 ' + ' '.join(lines[0].split()[1:]) + '\n'
+    lines[1] = '3600 ' + ' '.join(lines[1].split()[1:]) + '\n'
+
+    with open(filename, 'w') as f:
+        f.writelines(lines[:target_lines])
+
+if __name__ == "__main__":
+    main()

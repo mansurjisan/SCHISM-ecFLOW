@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+import os
+import argparse
+from datetime import datetime, timedelta
+import json
+import numpy as np
+from netCDF4 import Dataset
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate STOFS 3D Atlantic river forcing files')
+    parser.add_argument('--start_date', required=True, help='Start date (YYYYMMDDHH)')
+    parser.add_argument('--rnday', type=int, required=True, help='Simulation days')
+    parser.add_argument('--nwm_dir', required=True, help='Path to NWM input files')
+    parser.add_argument('--workdir', required=True, help='Working directory')
+    parser.add_argument('--fix_dir', required=True, help='Path to FIX files')
+    args = parser.parse_args()
+
+    # Load configuration files
+    sources = json.load(open(f"{args.fix_dir}/sources_conus.json"))
+    sinks = json.load(open(f"{args.fix_dir}/sinks_conus.json"))
+    relocate_map = np.loadtxt(f"{args.fix_dir}/relocate_map.txt", dtype=int)
+    scale_factors = np.loadtxt(f"{args.fix_dir}/source_scale.txt", delimiter=',', skiprows=1)
+    # Collect NWM files
+    nwm_files = []
+    for root, _, files in os.walk(args.nwm_dir):
+        for file in files:
+            if file.endswith(".conus.nc"):
+                nwm_files.append(os.path.join(root, file))
+    nwm_files.sort()
+
+    # Process discharge data (example snippet)
+    vsource_data = []
+    for nwm_file in nwm_files:
+        with Dataset(nwm_file) as nc:
+            feature_id = nc['feature_id'][:]
+            streamflow = nc['streamflow'][:]
+            # Aggregate/scale/relocate logic here
+            vsource_data.append(processed_data)
+
+    # Write vsource.th
+    with open(f"{args.workdir}/vsource.th", "w") as f:
+        for entry in vsource_data:
+            f.write(f"{entry['time']} {entry['discharge']}\n")
+
+    # Copy static files
+    for static_file in ["msource.th", "vsink.th"]:
+        os.system(f"cp {args.fix_dir}/{static_file} {args.workdir}/")
+
+if __name__ == "__main__":
+    main()

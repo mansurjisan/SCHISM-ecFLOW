@@ -1,0 +1,7 @@
+export FIXstofs3d="/work/noaa/nosofs/mjisan/STOFS/NWM"
+export DATA_prep_nwm="/home/mjisan/workflow/schism_suite2/workdir"
+export COMINnwm="/work/noaa/nosofs/mjisan/STOFS/NWM"
+export PYstofs3d="/work/noaa/nosofs/mjisan/WCOSS_BACKUP_RMV_AFTER_DEV_SWITCH/IT-stofs.v2.1.0/ush/stofs_3d_atl/pysh"  # Directory containing gen_sourcesink.py and relocate_source_feeder_lean.py
+export cycle="12"                    
+export PDYHH_NCAST_BEGIN="2025012500" 
+mkdir -p ${DATA_prep_nwm}

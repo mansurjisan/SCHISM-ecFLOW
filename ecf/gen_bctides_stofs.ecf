@@ -1,0 +1,71 @@
+#!/bin/bash
+%include <head.h>
+
+# Get paths and configuration from config.yml
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
+PREPROCESS_DIR=$(yq -r '.suite.preprocess_dir' "${CONFIG_FILE}")
+
+# Bctides-specific parameters
+BCTIDES_SCRIPT_DIR=$(yq -r '.bctides.script_dir' "${CONFIG_FILE}")
+BCTIDES_WORK_DIR=$(yq -r '.bctides.work_dir' "${CONFIG_FILE}")
+BCTIDES_SCRIPT_NAME=$(yq -r '.bctides.script_name' "${CONFIG_FILE}")  # Add this to your config.yml
+
+# Derived paths
+EXEC_PATH="${PREPROCESS_DIR}/exec/stofs_3d_atl_tide_fac"  
+TEMPLATE_PATH="${PREPROCESS_DIR}/fix/bctides.in_template" 
+
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
+
+# Initialize conda
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+
+# Activate conda environment
+conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
+
+# Get simulation parameters from config
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")  # Shared with namelist
+MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
+DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
+HOUR=$(yq -r '.namelist.hour' "${CONFIG_FILE}")
+RNDAY=$(yq -r '.bctides.rnday' "${CONFIG_FILE}")  # Now using bctides-specific rnday
+
+# Create work directory if it doesn't exist
+mkdir -p ${BCTIDES_WORK_DIR} || handle_error $? "Failed to create work directory"
+
+# Change to script directory
+cd ${BCTIDES_SCRIPT_DIR} || handle_error $? "Failed to change to bctides script directory"
+
+# Run Python script with error handling
+echo "Running bctides generation script..."
+python ${BCTIDES_SCRIPT_NAME} \
+  --year $YEAR \
+  --month $MONTH \
+  --day $DAY \
+  --hour $HOUR \
+  --rnday $RNDAY \
+  --exec_path "${EXEC_PATH}" \
+  --workdir "${BCTIDES_WORK_DIR}" \
+  --template_path "${TEMPLATE_PATH}"
+
+handle_error $? "Failed to run bctides generation script"
+
+# Check if bctides.in was created in the work directory
+if [ ! -f "${BCTIDES_WORK_DIR}/bctides.in" ]; then
+    handle_error 1 "bctides.in file not created in ${BCTIDES_WORK_DIR}"
+fi
+
+# Deactivate conda
+conda deactivate
+
+echo "Bctides generation completed successfully"
+ecflow_client --label=info "bctides generation complete"
+%include <tail.h>

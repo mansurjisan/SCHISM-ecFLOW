@@ -1,0 +1,73 @@
+#!/bin/bash
+%include <head.h>
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
+# Initialize conda
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+conda activate $(yq -r '.environment.conda.env_name' "${CONFIG_FILE}") || handle_error $? "Failed to activate conda environment"
+# --------------------------------------------------
+# Read Parameters from Config.yml (With Error Checks)
+# --------------------------------------------------
+RIVER_SCRIPT_DIR=$(yq -r '.river_forcing.script_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read script_dir")
+RIVER_WORK_DIR=$(yq -r '.river_forcing.work_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read work_dir")
+NWM_DIR=$(yq -r '.river_forcing.nwm_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read nwm_dir")
+FIX_DIR=$(yq -r '.river_forcing.fix_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read fix_dir")
+PYstofs3d=$(yq -r '.river_forcing.pyschism_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read pyschism_dir")
+export PYstofs3d="${PYstofs3d}"
+
+
+# Get date parameters with zero-padding
+
+MONTH=$(printf "%%02d" $(yq -r '.namelist.month' "${CONFIG_FILE}" || handle_error $? "Failed to read month"))
+DAY=$(printf "%%02d" $(yq -r '.namelist.day' "${CONFIG_FILE}" || handle_error $? "Failed to read day"))
+HOUR=$(printf "%%02d" $(yq -r '.namelist.hour' "${CONFIG_FILE}" || handle_error $? "Failed to read hour"))
+
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}" || handle_error $? "Failed to read year")
+
+# --------------------------------------------------
+# Set Environment Variables (No Redundancy)
+# --------------------------------------------------
+export FIXstofs3d="${FIX_DIR}"
+export DATA_prep_nwm="${RIVER_WORK_DIR}"
+export COMINnwm="${NWM_DIR}"
+#export PYSTOFS3D_DIR="${PYSTOFS3D_DIR}"
+export PDYHH_NCAST_BEGIN="${YEAR}${MONTH}${DAY}${HOUR}"  # YYYYMMDDHH
+export cycle="${HOUR}"
+#export PYstofs3d="${PYstofs3d}"
+
+# --------------------------------------------------
+# Directory Setup
+# --------------------------------------------------
+mkdir -p "${RIVER_WORK_DIR}" || handle_error $? "Failed to create work directory"
+# --------------------------------------------------
+# Execute River Forcing Script
+# --------------------------------------------------
+echo "Executing river forcing generation with:"
+echo "PDYHH_NCAST_BEGIN: ${PDYHH_NCAST_BEGIN}"
+echo "cycle: ${cycle}"
+cd "${RIVER_SCRIPT_DIR}" || handle_error $? "Failed to enter script directory"
+bash ./run_river_forcing.sh || handle_error $? "River forcing script failed"
+# --------------------------------------------------
+# Verify Outputs
+# --------------------------------------------------
+cd "${RIVER_WORK_DIR}" || handle_error $? "Failed to enter work directory"
+required_files=("vsource.th" "vsink.th" "msource.th")
+for file in "${required_files[@]}"; do
+    if [ ! -f "${file}" ]; then
+        handle_error 1 "Missing output file: ${file}"
+    fi
+done
+# --------------------------------------------------
+# Final Reporting
+# --------------------------------------------------
+ecflow_client --label=info "River forcing files generated"
+conda deactivate
+%include <tail.h>

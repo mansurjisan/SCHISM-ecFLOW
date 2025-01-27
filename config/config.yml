@@ -1,10 +1,10 @@
 # Basic SCHISM workflow configuration
 suite:
-  ecf_home: /work/noaa/nosofs/mjisan/SCHISM-ecFLOW
-  ecf_include: /work/noaa/nosofs/mjisan/SCHISM-ecFLOW
-  schism_run_type: schism
+  ecf_home: /home/mjisan/workflow
+  ecf_include: /home/mjisan/workflow
+  stofs_run_type: 3d-atl
   schism_cluster: hercules
-  preprocess_dir: '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW'
+  preprocess_dir: '/home/mjisan/workflow/schism_suite2'
 
 environment:
   conda:
@@ -12,18 +12,21 @@ environment:
     env_name: "pyschism_mjisan"
 
 namelist:
-  year: 1994
+  year: 2025
   month: 10
-  day: 12
-  hour: 17
+  day: 25
+  hour: 6
   rnday: 3
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/namelist"
-  work_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir"
-  
+  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/namelist/"
+  work_dir: "/home/mjisan/workflow/schism_suite2/workdir"
+  script_name: "stofs_3d_atl_param.py"
+
+
 bctides:
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Bnd"
-  hgrid_path: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/fix/hgrid.ll"
-  work_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir"
+  script_name: "gen_bctides_stofs.py"
+  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/Bnd"
+  hgrid_path: "/home/mjisan/workflow/schism_suite2/fix/hgrid.ll"
+  work_dir: "/home/mjisan/workflow/schism_suite2/workdir"
   rnday: 20
   bc_mode: "tidal"
   bc_type: 3
@@ -31,15 +34,24 @@ bctides:
   database: "tpxo"
   cutoff_depth: 40
   earth_tidal_potential: "Y"
+
+river_forcing:
+  script_name: "run_river_forcing.sh"  
+  fix_dir: "/home/mjisan/workflow/schism_suite2/fix"
+  work_dir: "/home/mjisan/workflow/schism_suite2/workdir/river"
+  nwm_dir: "/work/noaa/nosofs/mjisan/STOFS/NWM"
+  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/river_forcing"
+  pyschism_dir: "/work/noaa/nosofs/mjisan/WCOSS_BACKUP_RMV_AFTER_DEV_SWITCH/IT-stofs.v2.1.0/ush/stofs_3d_atl/pysh"
+
   
 sflux:
   rnday: 3
   data_file: 'data_stream-oper.nc'
   interval: 1
-  hgrid_path: '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/fix/hgrid.gr3'
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Sflux"
-  work_dir: '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir'
+  hgrid_path: '/home/mjisan/workflow/schism_suite2/fix/hgrid.gr3'
+  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/Sflux"
+  work_dir: '/home/mjisan/workflow/schism_suite2/workdir'
 
 manning:
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Manning"
-  work_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir"
+  script_dir: "/home/mjisan/workflow/schism_suite2/scripts/Manning"
+  work_dir: "/home/mjisan/workflow/schism_suite2/workdir"
