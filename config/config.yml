@@ -17,9 +17,9 @@ namelist:
   day: 25
   hour: 6
   rnday: 3
+  script_name: "stofs_3d_atl_param.py"
   script_dir: "/home/mjisan/workflow/stofs_suite/scripts/namelist/"
   work_dir: "/home/mjisan/workflow/stofs_suite/workdir"
-  script_name: "stofs_3d_atl_param.py"
 
 
 bctides:
@@ -30,10 +30,10 @@ bctides:
 
 river_forcing:
   script_name: "run_river_forcing.sh"  
-  fix_dir: "/home/mjisan/workflow/stofs_suite/fix"
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/river_forcing"
   work_dir: "/home/mjisan/workflow/stofs_suite/workdir/river"
   nwm_dir: "/work/noaa/nosofs/mjisan/STOFS/NWM"
-  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/river_forcing"
+  fix_dir: "/home/mjisan/workflow/stofs_suite/fix"
   pyschism_dir: "/work/noaa/nosofs/mjisan/WCOSS_BACKUP_RMV_AFTER_DEV_SWITCH/IT-stofs.v2.1.0/ush/stofs_3d_atl/pysh"
 
 
