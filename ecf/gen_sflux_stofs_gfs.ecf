@@ -1,0 +1,94 @@
+#!/bin/bash
+%include <head.h>
+
+# Function for error handling
+handle_error() {
+    local exit_code=$1
+    local error_msg=$2
+    if [ $exit_code -ne 0 ]; then
+        ecflow_client --label=error "$error_msg"
+        exit $exit_code
+    fi
+}
+
+# Initialize conda
+CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
+source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+conda activate $(yq -r '.environment.conda.env_name' "${CONFIG_FILE}") || handle_error $? "Failed to activate conda environment"
+export WGRIB2=$(yq -r '.environment.conda.wgrib2' "${CONFIG_FILE}") || handle_error $? "Failed to read WGRIB2 path"
+
+
+# --------------------------------------------------
+# Read Parameters from Config.yml
+# --------------------------------------------------
+GFS_SCRIPT_DIR=$(yq -r '.gfs_forcing.script_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read script_dir")
+GFS_WORK_DIR=$(yq -r '.gfs_forcing.work_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read work_dir")
+FIX_DIR=$(yq -r '.gfs_forcing.fix_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read fix_dir")
+COMINgfs=$(yq -r '.gfs_forcing.gfs_input_dir' "${CONFIG_FILE}" || handle_error $? "Failed to read gfs_input_dir")
+RUN_NAME=$(yq -r '.gfs_forcing.run_name' "${CONFIG_FILE}" || handle_error $? "Failed to read run_name")
+
+
+
+YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
+MONTH=$(printf "%%02d" $(yq -r '.namelist.month' "${CONFIG_FILE}"))  # Use %% to escape %
+DAY=$(printf "%%02d" $(yq -r '.namelist.day' "${CONFIG_FILE}"))      # Use %% to escape %
+HOUR=$(printf "%%02d" $(yq -r '.namelist.hour' "${CONFIG_FILE}"))    # Use %% to escape %
+
+# Calculate previous day's date
+PREV_DATE=$(date -d "${YEAR}-${MONTH}-${DAY} -1 day" +%%Y%%m%%d)  # Escaped %%
+
+
+
+# --------------------------------------------------
+# Set Environment Variables
+# --------------------------------------------------
+export DATA_prep_gfs="${GFS_WORK_DIR}"
+export COMINgfs="${COMINgfs}"
+export FIXstofs3d="${FIX_DIR}"
+export cycle="${HOUR}"
+export PDYHH_FCAST_BEGIN="${YEAR}${MONTH}${DAY}${HOUR}"
+export PDYHH_NCAST_BEGIN="${PREV_DATE}${HOUR}"
+
+export COMOUTrerun="${DATA_prep_gfs}/rerun"                          # Output directory
+export COMOUT_PREV="${DATA_prep_gfs}/prev_rerun"                     # Previous run output (if any)
+export RUN="${RUN_NAME}"
+
+
+
+# --------------------------------------------------
+# Directory Setup
+# --------------------------------------------------
+mkdir -p "${GFS_WORK_DIR}" || handle_error $? "Failed to create GFS work directory"
+cd "${GFS_WORK_DIR}" || handle_error $? "Failed to enter GFS workdir"
+
+# --------------------------------------------------
+# Execute GFS Forcing Script
+# --------------------------------------------------
+echo "Executing GFS surface forcing generation:"
+echo "Cycle: ${cycle}"
+echo "Start Time: ${PDYHH_NCAST_BEGIN}"
+
+# Run main GFS processing script
+${GFS_SCRIPT_DIR}/stofs_3d_atl_create_surface_forcing_gfs.sh || handle_error $? "GFS forcing script failed"
+
+# --------------------------------------------------
+# Verify Outputs
+# --------------------------------------------------
+required_files=(
+  "${RUN}.${cycle}.gfs.air.nc"
+  "${RUN}.${cycle}.gfs.prc.nc"
+  "${RUN}.${cycle}.gfs.rad.nc"
+)
+
+for file in "${required_files[@]}"; do
+    if [ ! -f "${COMOUTrerun}/$file" ]; then
+        handle_error 1 "Missing GFS output file: ${file}"
+    fi
+done
+
+# --------------------------------------------------
+# Final Reporting
+# --------------------------------------------------
+ecflow_client --label=info "GFS surface forcing files generated"
+conda deactivate
+%include <tail.h>

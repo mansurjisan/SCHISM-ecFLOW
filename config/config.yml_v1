@@ -1,0 +1,39 @@
+# STOFS-3D workflow configuration
+suite:
+  ecf_home: /home/mjisan/workflow
+  ecf_include: /home/mjisan/workflow
+  stofs_run_type: 3d-atl
+  stofs_cluster: hercules
+  preprocess_dir: '/home/mjisan/workflow/stofs_suite'
+
+environment:
+  conda:
+    path: "/apps/spack-managed/gcc-11.3.1/miniconda3-24.3.0-avnaftwsbozuvtsq7jrmpmcvf6c7yzlt/etc/profile.d/conda.sh"
+    env_name: "pyschism_mjisan"
+
+namelist:
+  year: 2025
+  month: 01
+  day: 25
+  hour: 6
+  rnday: 3
+  script_name: "stofs_3d_atl_param.py"
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/namelist/"
+  work_dir: "/home/mjisan/workflow/stofs_suite/workdir"
+
+
+bctides:
+  script_name: "gen_bctides_stofs.py"
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/Bnd"
+  work_dir: "/home/mjisan/workflow/stofs_suite/workdir"
+  rnday: 20
+
+river_forcing:
+  script_name: "run_river_forcing.sh"  
+  script_dir: "/home/mjisan/workflow/stofs_suite/scripts/river_forcing"
+  work_dir: "/home/mjisan/workflow/stofs_suite/workdir/river"
+  nwm_dir: "/work/noaa/nosofs/mjisan/STOFS/NWM"
+  fix_dir: "/home/mjisan/workflow/stofs_suite/fix"
+  pyschism_dir: "/work/noaa/nosofs/mjisan/WCOSS_BACKUP_RMV_AFTER_DEV_SWITCH/IT-stofs.v2.1.0/ush/stofs_3d_atl/pysh"
+
+

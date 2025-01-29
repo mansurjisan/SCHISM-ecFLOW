@@ -10,9 +10,15 @@ suite stofs_suite
 family preprocess
     task gen_bctides_stofs
       edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_bctides_stofs.ecf'
+
     task gen_namelist_stofs
       edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_namelist_stofs.ecf'
+
     task gen_river_forcing
       edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_river_forcing.ecf'
-  endfamily
+
+    task gen_sflux_stofs_gfs
+      edit ECF_SCRIPT '/home/mjisan/workflow/ecf/gen_sflux_stofs_gfs.ecf'
+
+   endfamily
 endsuite
