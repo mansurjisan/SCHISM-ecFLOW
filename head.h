@@ -18,11 +18,10 @@ export ECF_RID=$$             # record the process id. Also used for zombie dete
 # make sure client and server use the *same* version.
 # Important when there are multiple versions of ecFlow
 #export PATH=/usr/local/apps/ecflow/%ECF_VERSION%/bin:$PATH
-export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:$PATH
-export CONFIG_FILE="/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml" 
+#export PATH=/work/noaa/nosofs/mjisan/conda/.conda/envs/myecflow/bin:$PATH
+export CONFIG_FILE="/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/config/config.yml" 
 # Tell ecFlow we have started
 ecflow_client --init=$$
- 
  
 # Define a error handler
 ERROR() {

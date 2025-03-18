@@ -1,10 +1,10 @@
 # Basic SCHISM workflow configuration
 suite:
-  ecf_home: /work/noaa/nosofs/mjisan/SCHISM-ecFLOW
-  ecf_include: /work/noaa/nosofs/mjisan/SCHISM-ecFLOW
+  ecf_home: /lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW
+  ecf_include: /lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW
   schism_run_type: schism
   schism_cluster: hercules
-  preprocess_dir: '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW'
+  preprocess_dir: '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW'
 
 environment:
   conda:
@@ -17,13 +17,13 @@ namelist:
   day: 12
   hour: 17
   rnday: 3
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/namelist"
-  work_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir"
+  script_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/namelist"
+  work_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/workdir"
   
 bctides:
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Bnd"
-  hgrid_path: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/fix/hgrid.ll"
-  work_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir"
+  script_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/Bnd"
+  hgrid_path: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/fix/hgrid.ll"
+  work_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/workdir"
   rnday: 20
   bc_mode: "tidal"
   bc_type: 3
@@ -36,10 +36,10 @@ sflux:
   rnday: 3
   data_file: 'data_stream-oper.nc'
   interval: 1
-  hgrid_path: '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/fix/hgrid.gr3'
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Sflux"
-  work_dir: '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir'
+  hgrid_path: '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/fix/hgrid.gr3'
+  script_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/Sflux"
+  work_dir: '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/workdir'
 
 manning:
-  script_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ush/Manning"
-  work_dir: "/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/workdir"
+  script_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/Manning"
+  work_dir: "/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/workdir"

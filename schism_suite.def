@@ -1,33 +1,34 @@
 suite schism_suite
 
-  edit ECF_HOME '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW'
+  edit ECF_HOME '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW'
 
-  edit ECF_INCLUDE '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW'
+  edit ECF_INCLUDE '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW'
 
-  edit ECF_FILES '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/jobs'
+  edit ECF_FILES '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/jobs'
 
-  edit SCHISM_RUN_TYPE "$(yq -r .suite.schism_run_type ${CONFIG_FILE})"
+  edit PARSE_YAML '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/parse_yaml.py'
+  
+  edit SCHISM_RUN_TYPE "$(python ${PARSE_YAML} ${CONFIG_FILE} 'suite.schism_run_type')"
 
-  edit SCHISM_CLUSTER "$(yq -r .suite.schism_cluster ${CONFIG_FILE})"
+  edit SCHISM_CLUSTER "$(python ${PARSE_YAML} ${CONFIG_FILE} 'suite.schism_cluster')"
 
-  edit CONFIG_FILE '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/config/config.yml'
-
-  edit PREPROCESS "$(yq -r .suite.preprocess_dir ${CONFIG_FILE})"
+  edit PREPROCESS "$(python ${PARSE_YAML} ${CONFIG_FILE} 'suite.preprocess_dir')"
+  
 
 
 family preprocess
 
-    task gen_manning
-      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_manning.ecf'
+#    task gen_manning
+#      edit ECF_SCRIPT '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ecf/gen_manning.ecf'
 
-    task gen_sflux_era5
-      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_sflux_era5.ecf'
+#    task gen_sflux_era5
+#      edit ECF_SCRIPT '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ecf/gen_sflux_era5.ecf'
 
    task gen_bctides
-      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_bctides.ecf'
+      edit ECF_SCRIPT '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ecf/gen_bctides.ecf'
 
    task gen_namelist
-      edit ECF_SCRIPT '/work/noaa/nosofs/mjisan/SCHISM-ecFLOW/ecf/gen_namelist.ecf'
+      edit ECF_SCRIPT '/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ecf/gen_namelist.ecf'
 
   endfamily
 endsuite

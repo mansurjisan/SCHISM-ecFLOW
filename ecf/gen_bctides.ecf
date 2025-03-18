@@ -1,12 +1,16 @@
 #!/bin/bash
 %include <head.h>
 
+PARSE_YAML="/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/parse_yaml.py"
+
+SCRIPT_DIR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.script_dir")
+WORK_DIR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.work_dir")
+
+
 # Get paths and configuration from config.yml
-CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
-CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
-SCRIPT_DIR=$(yq -r '.bctides.script_dir' "${CONFIG_FILE}")
-HGRID_PATH=$(yq -r '.bctides.hgrid_path' "${CONFIG_FILE}")
-WORK_DIR=$(yq -r '.bctides.work_dir' "${CONFIG_FILE}")
+SCRIPT_DIR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.script_dir")
+HGRID_PATH=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.hgrid_path")
+WORK_DIR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.work_dir")
 
 # Function for error handling
 handle_error() {
@@ -18,23 +22,20 @@ handle_error() {
     fi
 }
 
-# Initialize conda
-source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
-
-# Activate conda environment
-conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
-
 # Get simulation parameters from config
-YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
-MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
-DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
-RNDAY=$(yq -r '.bctides.rnday' "${CONFIG_FILE}")
-BC_MODE=$(yq -r '.bctides.bc_mode' "${CONFIG_FILE}")
-BC_TYPE=$(yq -r '.bctides.bc_type' "${CONFIG_FILE}")
-CONSTITUENTS=$(yq -r '.bctides.constituents' "${CONFIG_FILE}")
-DATABASE=$(yq -r '.bctides.database' "${CONFIG_FILE}")
-CUTOFF_DEPTH=$(yq -r '.bctides.cutoff_depth' "${CONFIG_FILE}")
-EARTH_TIDAL=$(yq -r '.bctides.earth_tidal_potential' "${CONFIG_FILE}")
+YEAR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.year")
+MONTH=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.month")
+DAY=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.day")
+HOUR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.hour")
+RNDAY=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.rnday")
+
+
+BC_MODE=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.bc_mode")
+BC_TYPE=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.bc_type")
+CONSTITUENTS=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.constituents")
+DATABASE=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.database")
+CUTOFF_DEPTH=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.cutoff_depth")
+EARTH_TIDAL=$(python ${PARSE_YAML} "${CONFIG_FILE}" "bctides.earth_tidal_potential")
 
 # Create START_DATE from year, month, day
 START_DATE="${YEAR}-${MONTH}-${DAY}"
@@ -66,7 +67,7 @@ fi
 mv -f bctides.in ${WORK_DIR}/ || handle_error $? "Failed to move bctides.in to work directory"
 
 # Deactivate conda
-conda deactivate
+#conda deactivate
 
 echo "Bctides generation completed successfully"
 ecflow_client --label=info "bctides generation complete"

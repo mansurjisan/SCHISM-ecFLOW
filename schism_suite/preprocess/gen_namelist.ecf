@@ -1,11 +1,15 @@
 #!/bin/bash
 %include <head.h>
 
+PARSE_YAML="/lfs/h1/nos/estofs/noscrub/mansur.jisan/packages/SCHISM-ecFLOW/ush/parse_yaml.py"
+
 # Get paths and configuration from config.yml
-CONDA_PATH=$(yq -r '.environment.conda.path' "${CONFIG_FILE}")
-CONDA_ENV=$(yq -r '.environment.conda.env_name' "${CONFIG_FILE}")
-SCRIPT_DIR=$(yq -r '.namelist.script_dir' "${CONFIG_FILE}")
-WORK_DIR=$(yq -r '.namelist.work_dir' "${CONFIG_FILE}")
+#SCRIPT_DIR=$(yq -r '.namelist.script_dir' "${CONFIG_FILE}")
+#WORK_DIR=$(yq -r '.namelist.work_dir' "${CONFIG_FILE}")
+
+SCRIPT_DIR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.script_dir")
+WORK_DIR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.work_dir")
+
 
 # Function for error handling
 handle_error() {
@@ -18,17 +22,17 @@ handle_error() {
 }
 
 # Initialize conda
-source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
+#source "${CONDA_PATH}" || handle_error $? "Failed to source conda.sh"
 
 # Activate conda environment
-conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
+#conda activate ${CONDA_ENV} || handle_error $? "Failed to activate conda environment"
 
 # Get simulation parameters from config
-YEAR=$(yq -r '.namelist.year' "${CONFIG_FILE}")
-MONTH=$(yq -r '.namelist.month' "${CONFIG_FILE}")
-DAY=$(yq -r '.namelist.day' "${CONFIG_FILE}")
-HOUR=$(yq -r '.namelist.hour' "${CONFIG_FILE}")
-RNDAY=$(yq -r '.namelist.rnday' "${CONFIG_FILE}")
+YEAR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.year")
+MONTH=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.month")
+DAY=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.day")
+HOUR=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.hour")
+RNDAY=$(python ${PARSE_YAML} "${CONFIG_FILE}" "namelist.rnday")
 
 # Create work directory if it doesn't exist
 mkdir -p ${WORK_DIR} || handle_error $? "Failed to create work directory"
@@ -54,7 +58,7 @@ if [ ! -f "${WORK_DIR}/param.nml" ]; then
 fi
 
 # Deactivate conda
-conda deactivate
+#conda deactivate
 
 echo "Namelist generation completed successfully"
 ecflow_client --label=info "namelist generation complete"
